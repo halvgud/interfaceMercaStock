@@ -15,8 +15,8 @@ namespace ServicioMercastock
         {
             InitializeComponent();
             Opcion.InicializarVariables();
-          
-        }   
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -40,15 +40,26 @@ namespace ServicioMercastock
             if (Sucursal.Autenticar())
             {
                 Console.WriteLine(@"Autenticado");
-             /*   backgroundWorker1.RunWorkerAsync();
-                bwUsuario.RunWorkerAsync();
-                bwArticulo.RunWorkerAsync();
-                bwParametro.RunWorkerAsync();
-                bwDepartamento.RunWorkerAsync();
-                bwCategoria.RunWorkerAsync();
-                bwVenta.RunWorkerAsync();
-                bwDetalleVenta.RunWorkerAsync();*/
-                bwNotificacionGcm.RunWorkerAsync();
+              /*     backgroundWorker1.RunWorkerAsync();
+                   bwUsuario.RunWorkerAsync();
+                   bwArticulo.RunWorkerAsync();
+                   bwParametro.RunWorkerAsync();
+                   bwDepartamento.RunWorkerAsync();
+                   bwCategoria.RunWorkerAsync();
+                   bwVenta.RunWorkerAsync();
+                   bwDetalleVenta.RunWorkerAsync();*/
+                //bwNotificacionGcm.RunWorkerAsync();
+                bwInventario1.RunWorkerAsync();
+           //     bwInventario2.RunWorkerAsync();
+         /*       GcmPushNotification.ObtenerListaGcm(x =>
+                {
+                    GcmPushNotification.EnviarNotificacion(Opcion.LimpiarJson(x), y =>
+                    {
+                        Console.WriteLine(y);
+                        Opcion.Log("Log_GCM.txt", y);
+
+                    });
+                });*/
             }
             else
             {
@@ -58,7 +69,7 @@ namespace ServicioMercastock
         }
 
         public static bool EnviarNotificacion = false;
-        private void MetodoGenerico(BackgroundWorker bw,Label status, Action<Action<string>> exportar, Action<string, Action<string>> importar, int tiempo)
+        private void MetodoGenerico(Label status, Action<Action<string>> exportar, Action<string, Action<string>> importar, int tiempo)
         {
             try
             {
@@ -69,13 +80,8 @@ namespace ServicioMercastock
                     importar(Opcion.LimpiarJson(x), y =>
                     {
                         BeginInvoke((MethodInvoker)(() => status.Text = @"3.- Envío terminado"));
-                        if (EnviarNotificacion)
-                        {
-                            bwNotificacionGcm.RunWorkerAsync();
-                        }
-                        bw.CancelAsync();
                         Thread.Sleep(1000 * 60 * tiempo);
-                        MetodoGenerico(bw,status, exportar, importar, tiempo);
+                        MetodoGenerico(status, exportar, importar, tiempo);
                     });
                 });
             }
@@ -89,7 +95,7 @@ namespace ServicioMercastock
         {
             try
             {
-                MetodoGenerico(bwUsuario,statusUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar, Config.General.Tiempo.Usuario);
+                MetodoGenerico(statusUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar, Config.General.Tiempo.Usuario);
             }
             catch (Exception errorException)
             {
@@ -102,7 +108,7 @@ namespace ServicioMercastock
             {
                 _memoriaRam = (Process.GetCurrentProcess().WorkingSet64 / 1024).ToString();
                 backgroundWorker1.ReportProgress(0);
-                Thread.Sleep(1000*Config.General.Tiempo.Pantalla);
+                Thread.Sleep(1000 * Config.General.Tiempo.Pantalla);
             }
         }
 
@@ -112,7 +118,7 @@ namespace ServicioMercastock
         {
             try
             {
-                MetodoGenerico(bwParametro,statusParametro, Parametro.Externa.Exportar, Parametro.Local.Importar, Config.General.Tiempo.Parametro);          
+                MetodoGenerico(statusParametro, Parametro.Externa.Exportar, Parametro.Local.Importar, Config.General.Tiempo.Parametro);
             }
             catch (ArgumentOutOfRangeException errorException)
             {
@@ -124,7 +130,7 @@ namespace ServicioMercastock
         {
             try
             {
-                MetodoGenerico(bwArticulo,statusArticulo, Articulo.Local.Exportar, Articulo.Externa.Importar, Config.General.Tiempo.Articulo);
+                MetodoGenerico(statusArticulo, Articulo.Local.Exportar, Articulo.Externa.Importar, Config.General.Tiempo.Articulo);
             }
             catch (Exception errorException)
             {
@@ -133,10 +139,10 @@ namespace ServicioMercastock
         }
 
         private void bwCategoria_DoWork(object sender, DoWorkEventArgs e)
-        { 
+        {
             try
             {
-                MetodoGenerico(bwCategoria,statusCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, Config.General.Tiempo.Categoria);
+                MetodoGenerico(statusCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, Config.General.Tiempo.Categoria);
             }
             catch (Exception errorException)
             {
@@ -145,10 +151,10 @@ namespace ServicioMercastock
         }
 
         private void bwDepartamento_DoWork(object sender, DoWorkEventArgs e)
-        {            
+        {
             try
             {
-                MetodoGenerico(bwDepartamento,statusCategoria, Departamento.Local.Exportar, Departamento.Externa.Importar, Config.General.Tiempo.Departamento);
+                MetodoGenerico(statusCategoria, Departamento.Local.Exportar, Departamento.Externa.Importar, Config.General.Tiempo.Departamento);
             }
             catch (Exception errorException)
             {
@@ -172,7 +178,7 @@ namespace ServicioMercastock
         {
             try
             {
-                MetodoGenerico(bwVenta,statusVenta, Venta.Local.Exportar, Venta.Externa.Importar, Config.General.Tiempo.Venta);
+                MetodoGenerico(statusVenta, Venta.Local.Exportar, Venta.Externa.Importar, Config.General.Tiempo.Venta);
             }
             catch (Exception errorException)
             {
@@ -184,7 +190,7 @@ namespace ServicioMercastock
         {
             try
             {
-                MetodoGenerico(bwDetalleVenta,statusDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, Config.General.Tiempo.DetalleVenta);
+                MetodoGenerico(statusDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, Config.General.Tiempo.DetalleVenta);
             }
             catch (Exception errorException)
             {
@@ -192,11 +198,23 @@ namespace ServicioMercastock
             }
         }
 
-        public void bwNotificacionGcm_DoWork(object sender, DoWorkEventArgs e)
+        public void bwInventario1_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
-                MetodoGenerico(bwNotificacionGcm,statusDetalleVenta, GcmPushNotification.ObtenerListaGcm, GcmPushNotification.EnviarNotificacion, Config.General.Tiempo.DetalleVenta);
+                MetodoGenerico(statusInventario, Inventario.Externa.Exportar, Inventario.Local.Importar, Config.General.Tiempo.Inventario1);
+            }
+            catch (Exception errorException)
+            {
+                Console.WriteLine(errorException.Message);
+            }
+        }
+
+        private void bwInventario2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                MetodoGenerico(statusInventario, Inventario.Local.Exportar, Inventario.Externa.Importar, Config.General.Tiempo.Inventario2);
             }
             catch (Exception errorException)
             {

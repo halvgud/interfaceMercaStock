@@ -14,6 +14,8 @@
                 public static int Parametro { get; set; }
                 public static int Venta { get; set; }
                 public static int DetalleVenta { get; set; }
+                public static int Inventario1 { get; set; }
+                public static int Inventario2 { get; set; }
             }
 
            public class Gcm

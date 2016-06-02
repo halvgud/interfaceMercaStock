@@ -10,7 +10,7 @@ namespace ServicioMercastock.Data
 {
     public class GcmPushNotification
     {
-        public static void ObtenerListaGcm(Action<string> callback)
+        public static void ObtenerListaGcm(string json,Action<string> callback)
         {
             try
             {
@@ -37,11 +37,11 @@ namespace ServicioMercastock.Data
                 Opcion.Log("log_GCM.txt", e.Message);
             }
         }
-        public static void EnviarNotificacion(string deviceRegIds,Action<string> callback)
+        public static void EnviarNotificacion(string categorias,string deviceRegIds,Action<string> callback)
         {
             //TODO Considerar separar el json object
-            //var regIds = string.Join("\",\"", deviceRegIds);
-            deviceRegIds = (JObject.Parse(deviceRegIds).Property("data").Value.ToString());
+            var a = JArray.Parse(JObject.Parse(deviceRegIds).Property("data").Value.ToString());
+            var b = JArray.Parse(JObject.Parse(categorias).Property("data").Value.ToString());
             var tRequest = WebRequest.Create(Config.General.Gcm.UrlRequest);
             tRequest.Method = Constantes.Http.MetodoHttp.Post;
             tRequest.ContentType =Constantes.Http.TipoDeContenido.Json;
@@ -50,14 +50,24 @@ namespace ServicioMercastock.Data
             var postdata = new JObject();
             var data = new JObject();
             var arreglo = new JArray();
+            var arreglo2 = new JArray();
+            foreach (var t in a)
+            {
+                arreglo.Add(t);
+            }
+            foreach (var x in b)
+            {
+                arreglo2.Add(x["cat_id"]);
+            }
             postdata.Add(Constantes.Gcm.Parametro.CollapseKey, Config.General.GcmParametro.LlaveDeColapso);
             postdata.Add(Constantes.Gcm.Parametro.TimeToLive, Config.General.GcmParametro.TiempoDeVida);
             postdata.Add(Constantes.Gcm.Parametro.DelayWhileIdle, Config.General.GcmParametro.RetardoMientrasInactivo);
             data.Add(Constantes.Gcm.Parametro.Message, Config.General.GcmParametro.Mensaje);
+            data.Add(Constantes.Gcm.Parametro.Data, arreglo2);
             data.Add(Constantes.Gcm.Parametro.Time, DateTime.Now);
             postdata.Add(Constantes.Gcm.Parametro.Data, data);
-            arreglo.Add(deviceRegIds);
             postdata.Add(Constantes.Gcm.Parametro.RegistrationIds,arreglo);
+            Console.WriteLine(postdata);
             var bytes = Encoding.UTF8.GetBytes(postdata.ToString());
             tRequest.ContentLength = bytes.Length;
 

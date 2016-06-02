@@ -46,6 +46,14 @@
             this.statusVenta = new System.Windows.Forms.Label();
             this.statusDetalleVenta = new System.Windows.Forms.Label();
             this.statusInventario = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LocalUrlInventario = new System.Windows.Forms.Label();
@@ -93,15 +101,8 @@
             this.bwDepartamento = new System.ComponentModel.BackgroundWorker();
             this.bwVenta = new System.ComponentModel.BackgroundWorker();
             this.bwDetalleVenta = new System.ComponentModel.BackgroundWorker();
-            this.bwNotificacionGcm = new System.ComponentModel.BackgroundWorker();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
+            this.bwInventario1 = new System.ComponentModel.BackgroundWorker();
+            this.bwInventario2 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -317,6 +318,78 @@
             this.statusInventario.Size = new System.Drawing.Size(31, 13);
             this.statusInventario.TabIndex = 19;
             this.statusInventario.Text = "Valor";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(198, 40);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(57, 13);
+            this.label24.TabIndex = 20;
+            this.label24.Text = "INACTIVO";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(198, 60);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(57, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "INACTIVO";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(198, 94);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(57, 13);
+            this.label29.TabIndex = 22;
+            this.label29.Text = "INACTIVO";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(198, 115);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(57, 13);
+            this.label30.TabIndex = 23;
+            this.label30.Text = "INACTIVO";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(198, 140);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(57, 13);
+            this.label31.TabIndex = 24;
+            this.label31.Text = "INACTIVO";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(198, 169);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(57, 13);
+            this.label32.TabIndex = 25;
+            this.label32.Text = "INACTIVO";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(198, 199);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(57, 13);
+            this.label33.TabIndex = 26;
+            this.label33.Text = "INACTIVO";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(198, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(40, 13);
+            this.label34.TabIndex = 27;
+            this.label34.Text = "Estado";
             // 
             // groupBox1
             // 
@@ -759,82 +832,15 @@
             this.bwDetalleVenta.WorkerReportsProgress = true;
             this.bwDetalleVenta.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDetalleVenta_DoWork);
             // 
-            // bwNotificacionGcm
+            // bwInventario1
             // 
-            this.bwNotificacionGcm.WorkerReportsProgress = true;
-            this.bwNotificacionGcm.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwNotificacionGcm_DoWork);
+            this.bwInventario1.WorkerReportsProgress = true;
+            this.bwInventario1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario1_DoWork);
             // 
-            // label24
+            // bwInventario2
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(198, 40);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(57, 13);
-            this.label24.TabIndex = 20;
-            this.label24.Text = "INACTIVO";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(198, 60);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(57, 13);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "INACTIVO";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(198, 94);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(57, 13);
-            this.label29.TabIndex = 22;
-            this.label29.Text = "INACTIVO";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(198, 115);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(57, 13);
-            this.label30.TabIndex = 23;
-            this.label30.Text = "INACTIVO";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(198, 140);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(57, 13);
-            this.label31.TabIndex = 24;
-            this.label31.Text = "INACTIVO";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(198, 169);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(57, 13);
-            this.label32.TabIndex = 25;
-            this.label32.Text = "INACTIVO";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(198, 199);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(57, 13);
-            this.label33.TabIndex = 26;
-            this.label33.Text = "INACTIVO";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(198, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(40, 13);
-            this.label34.TabIndex = 27;
-            this.label34.Text = "Estado";
+            this.bwInventario2.WorkerReportsProgress = true;
+            this.bwInventario2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario2_DoWork);
             // 
             // Form1
             // 
@@ -927,7 +933,7 @@
         private System.Windows.Forms.Label statusInventario;
         private System.ComponentModel.BackgroundWorker bwVenta;
         private System.ComponentModel.BackgroundWorker bwDetalleVenta;
-        public System.ComponentModel.BackgroundWorker bwNotificacionGcm;
+        public System.ComponentModel.BackgroundWorker bwInventario1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
@@ -936,6 +942,7 @@
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
+        public System.ComponentModel.BackgroundWorker bwInventario2;
     }
 }
 
