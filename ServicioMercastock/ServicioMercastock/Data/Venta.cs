@@ -21,20 +21,25 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Externa.ObtenerIdVenta(), ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content); 
-                        }
-                        else
-                        {
-                            Opcion.Log("log_venta_local.txt", response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.Venta, response.Content);
+                                break;
                         }
 
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_venta_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.Venta, e.Message);
                 }
             }
         }
@@ -54,7 +59,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_venta_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Venta, e.Message);
                     throw;
                 }
             }
@@ -75,13 +80,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_venta_externa.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Venta, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_venta_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Venta, e.Message);
                 }
             }
         }

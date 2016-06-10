@@ -39,13 +39,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_usuario_local.txt", response.Content);
+                            Opcion.Log(Config.Log.Interno.Usuario, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                {
-                    Opcion.Log("log_usuario_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.Usuario, e.Message);
                }
            }
         }
@@ -62,19 +62,23 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content);
-                        }
-                        else
-                        {
-                            Opcion.Log("log_usuario_externa.txt", response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Externo.Usuario, response.Content);
+                                break;
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_usuario_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Usuario, e.Message);
                 }
             }
         }

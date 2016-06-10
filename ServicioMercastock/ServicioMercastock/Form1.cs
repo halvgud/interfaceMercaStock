@@ -37,52 +37,87 @@ namespace ServicioMercastock
             ExternoUrlParametro.Text = Config.Externa.Parametro.UrlExportar;
             ExternoUrlUsuario.Text = Config.Externa.Usuario.UrlExportar;
             ExternoUrlVenta.Text = Config.Externa.Venta.UrlImportar;
+            TiempoPantalla.Text = Config.General.Tiempo.Pantalla.ToString();
+            TiempoArticulo.Text = Config.General.Tiempo.Articulo.ToString();
+            TiempoCategoria.Text = Config.General.Tiempo.Categoria.ToString();
+            TiempoDepartamento.Text = Config.General.Tiempo.Departamento.ToString();
+            TiempoUsuario.Text = Config.General.Tiempo.Usuario.ToString();
+            TiempoParametro.Text = Config.General.Tiempo.Parametro.ToString();
+            TiempoDetalleVenta.Text = Config.General.Tiempo.DetalleVenta.ToString();
+            TiempoVenta.Text = Config.General.Tiempo.Venta.ToString();
+            TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
+            TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
+            InicializarTareasAsyncronas();
+
+
+
+        }
+
+        private void InicializarTareasAsyncronas()
+        {
             if (Sucursal.Autenticar())
             {
                 Console.WriteLine(@"Autenticado");
-              /*     backgroundWorker1.RunWorkerAsync();
-                   bwUsuario.RunWorkerAsync();
-                   bwArticulo.RunWorkerAsync();
-                   bwParametro.RunWorkerAsync();
-                   bwDepartamento.RunWorkerAsync();
-                   bwCategoria.RunWorkerAsync();
-                   bwVenta.RunWorkerAsync();
-                   bwDetalleVenta.RunWorkerAsync();*/
-                //bwNotificacionGcm.RunWorkerAsync();
-                bwInventario1.RunWorkerAsync();
-           //     bwInventario2.RunWorkerAsync();
-         /*       GcmPushNotification.ObtenerListaGcm(x =>
-                {
-                    GcmPushNotification.EnviarNotificacion(Opcion.LimpiarJson(x), y =>
-                    {
-                        Console.WriteLine(y);
-                        Opcion.Log("Log_GCM.txt", y);
+                backgroundWorker1.RunWorkerAsync();
+                InicializarEstado(estadoUsuario,bwUsuario,Config.General.Activacion.Usuario);
+                InicializarEstado(estadoArticulo, bwArticulo, Config.General.Activacion.Articulo);
+                InicializarEstado(estadoParametro, bwParametro, Config.General.Activacion.Parametro);
+                InicializarEstado(estadoDepartamento, bwDepartamento, Config.General.Activacion.Departamento);
+                InicializarEstado(estadoCategoria, bwCategoria, Config.General.Activacion.Categoria);
+                InicializarEstado(estadoVenta, bwVenta, Config.General.Activacion.Venta);
+                InicializarEstado(estadoDetalleVenta, bwDetalleVenta, Config.General.Activacion.DetalleVenta);
+                InicializarEstado(estadoInventario1, bwInventario1, Config.General.Activacion.Inventario1);
+                InicializarEstado(estadoInventario2, bwInventario2, Config.General.Activacion.Inventario2);
+                bwFormulario.RunWorkerAsync();
 
-                    });
-                });*/
             }
             else
             {
                 MessageBox.Show(@"Error de Autenticación, revisar credenciales");
             }
+        }
 
+        public void InicializarEstado(Label estado,BackgroundWorker bw,bool bandera)
+        {
+            if (!bandera) return;
+            estado.Text = @"ACTIVO";
+            bw.RunWorkerAsync();
         }
 
         public static bool EnviarNotificacion = false;
-        private void MetodoGenerico(Label status, Action<Action<string>> exportar, Action<string, Action<string>> importar, int tiempo)
+        private bool _ejecucionEnProgreso;
+        private void MetodoGenerico(Label status,Label estadoTiempo, Action<Action<string>> exportar, Action<string, Action<string>> importar,ref int tiempo,int tiempo2)
         {
+            var delegateTiempo = tiempo;
+            if (_flagFinalizarEjecucion) return;
             try
             {
+                _ejecucionEnProgreso = true;
                 BeginInvoke((MethodInvoker)(() => status.Text = @"1.- Exportando Información al Servidor"));
                 exportar(x =>
                 {
-                    BeginInvoke((MethodInvoker)(() => status.Text = @"2.- Enviando información"));
-                    importar(Opcion.LimpiarJson(x), y =>
+                    if (x != "CONTINUAR")
                     {
-                        BeginInvoke((MethodInvoker)(() => status.Text = @"3.- Envío terminado"));
-                        Thread.Sleep(1000 * 60 * tiempo);
-                        MetodoGenerico(status, exportar, importar, tiempo);
-                    });
+                        delegateTiempo = tiempo2;
+                        BeginInvoke((MethodInvoker) (() => status.Text = @"2.- Enviando información"));
+                        importar(Opcion.LimpiarJson(x), y =>
+                        {
+                            BeginInvoke((MethodInvoker) (() => status.Text = @"3.- Envío terminado"));
+                            TiempoDeEspera(estadoTiempo, ref delegateTiempo);
+                            _ejecucionEnProgreso = false;
+                            MetodoGenerico(status,estadoTiempo, exportar, importar, ref delegateTiempo,tiempo2);
+                            
+                        });
+                    }
+                    else
+                    {
+                        delegateTiempo += 10;
+                        BeginInvoke((MethodInvoker)(() => status.Text = @"1.- Reiniciando Petición"));
+                        TiempoDeEspera(estadoTiempo,ref delegateTiempo);
+                        _ejecucionEnProgreso = false;
+                        MetodoGenerico(status,estadoTiempo, exportar, importar,ref delegateTiempo,tiempo2);
+                    }
+
                 });
             }
             catch (Exception e)
@@ -91,16 +126,19 @@ namespace ServicioMercastock
             }
         }
 
+        private static void TiempoDeEspera(Label estadoTiempo, ref int tiempoDeEspera)
+        {
+            for (var i = tiempoDeEspera; i >= 0; --i)
+            {
+                estadoTiempo.Text = i + @" Minutos";
+                Thread.Sleep(1000*60);
+            }
+        }
+
         private void bwUsuario_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar, Config.General.Tiempo.Usuario);
-            }
-            catch (Exception errorException)
-            {
-                Opcion.Log("log_usuario.txt", errorException.Message);
-            }
+                var tiempo = Config.General.Tiempo.Pantalla;
+                MetodoGenerico(statusUsuario,TiempoUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar,ref tiempo,tiempo);
         }
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -116,50 +154,32 @@ namespace ServicioMercastock
 
         private void bWParametro_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusParametro, Parametro.Externa.Exportar, Parametro.Local.Importar, Config.General.Tiempo.Parametro);
-            }
-            catch (ArgumentOutOfRangeException errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+
+            var tiempo = Config.General.Tiempo.Parametro;
+            MetodoGenerico(statusParametro,TiempoParametro, Parametro.Externa.Exportar, Parametro.Local.Importar, ref tiempo,tiempo);
         }
 
         private void bwArticulo_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusArticulo, Articulo.Local.Exportar, Articulo.Externa.Importar, Config.General.Tiempo.Articulo);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+
+                var tiempo = Config.General.Tiempo.Articulo;
+                MetodoGenerico(statusArticulo,TiempoArticulo, Articulo.Local.Exportar, Articulo.Externa.Importar, ref tiempo,tiempo);
+
         }
 
         private void bwCategoria_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, Config.General.Tiempo.Categoria);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+                var tiempo = Config.General.Tiempo.Categoria;
+                MetodoGenerico(statusCategoria,TiempoCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, ref tiempo,tiempo);
+
         }
 
         private void bwDepartamento_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusCategoria, Departamento.Local.Exportar, Departamento.Externa.Importar, Config.General.Tiempo.Departamento);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+
+                var tiempo = Config.General.Tiempo.Departamento;
+                MetodoGenerico(statusDepartamento,TiempoDepartamento, Departamento.Local.Exportar, Departamento.Externa.Importar,ref tiempo,tiempo);
+
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -176,49 +196,58 @@ namespace ServicioMercastock
 
         private void bwVenta_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusVenta, Venta.Local.Exportar, Venta.Externa.Importar, Config.General.Tiempo.Venta);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+                var tiempo = Config.General.Tiempo.Venta;
+                MetodoGenerico(statusVenta,TiempoVenta, Venta.Local.Exportar, Venta.Externa.Importar, ref tiempo,tiempo);
+
         }
 
         private void bwDetalleVenta_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, Config.General.Tiempo.DetalleVenta);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+
+                var tiempo = Config.General.Tiempo.DetalleVenta;
+                MetodoGenerico(statusDetalleVenta,TiempoDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, ref tiempo,tiempo);
+
         }
 
         public void bwInventario1_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
-            {
-                MetodoGenerico(statusInventario, Inventario.Externa.Exportar, Inventario.Local.Importar, Config.General.Tiempo.Inventario1);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
-            }
+
+                var tiempo = Config.General.Tiempo.Inventario1;
+                MetodoGenerico(statusInventario,TiempoInventario1, Inventario.Externa.Exportar, Inventario.Local.Importar,ref tiempo,tiempo);
+
         }
 
         private void bwInventario2_DoWork(object sender, DoWorkEventArgs e)
         {
-            try
+
+                var tiempo = Config.General.Tiempo.Inventario2;
+                MetodoGenerico(statusInventario2,TiempoInventario2, Inventario.Local.Exportar, Inventario.Externa.Importar,ref tiempo,tiempo);
+   
+        }
+
+        private bool _flagFinalizarEjecucion;
+        private void bwFormulario_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(1000*60*6);
+            FinalizarEjecuciones();
+        }
+
+        private void FinalizarEjecuciones()
+        {
+            while (true)
             {
-                MetodoGenerico(statusInventario, Inventario.Local.Exportar, Inventario.Externa.Importar, Config.General.Tiempo.Inventario2);
-            }
-            catch (Exception errorException)
-            {
-                Console.WriteLine(errorException.Message);
+                _flagFinalizarEjecucion = true;
+                if (!_ejecucionEnProgreso)
+                {
+                    Process.Start(Application.ExecutablePath); // to start new instance of application
+                    Close();
+                }
+                else
+                {
+                    Thread.Sleep(60000);
+                    continue;
+                }
+                break;
             }
         }
     }

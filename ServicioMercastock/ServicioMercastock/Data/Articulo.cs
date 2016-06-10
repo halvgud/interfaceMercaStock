@@ -17,23 +17,27 @@ namespace ServicioMercastock.Data
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
-                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, "", ParameterType.RequestBody);
+                    rest.Peticion.AddJsonBody(new {idSucursal=Config.Externa.Sucursal.IdSucursal });
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content);
-                        }
-                        else
-                        {
-                            Opcion.Log("log_articulo_local.txt",response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.Articulo,response.Content);
+                                break;
                         }
 
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_articulo_local.txt",e.Message);
+                    Opcion.Log(Config.Log.Interno.Articulo, e.Message);
                 }
             }
         }
@@ -57,13 +61,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_articulo_externa.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Articulo, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_articulo_externa.txt",e.Message);
+                    Opcion.Log(Config.Log.Externo.Articulo,e.Message);
                 }
             }
         }

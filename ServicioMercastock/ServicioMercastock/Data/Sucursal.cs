@@ -18,14 +18,26 @@ namespace ServicioMercastock.Data
             rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
             rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Opcion.LimpiarJson(ObtenerCredencialesLocal()), ParameterType.RequestBody);
                 var respuesta = rest.Cliente.Execute(rest.Peticion);
-                Config.Externa.Sucursal.ClaveApi = JObject.Parse(respuesta.Content).Property("claveAPI").Value.ToString();
-                Config.Externa.Sucursal.IdSucursal =
-                    JObject.Parse(respuesta.Content).Property("idSucursal").Value.ToString();
+                if (respuesta.StatusCode == HttpStatusCode.OK)
+                {
+                    Config.Externa.Sucursal.ClaveApi =
+                        JObject.Parse(respuesta.Content).Property("claveAPI").Value.ToString();
+                    Config.Externa.Sucursal.IdSucursal =
+                        JObject.Parse(respuesta.Content).Property("idSucursal").Value.ToString();
+                    Config.Externa.Sucursal.Nombre =
+                        JObject.Parse(respuesta.Content).Property("nombre").Value.ToString();
+
+
+                }
+                else
+                {
+                    throw new Exception("Error de autenticación: "+respuesta.Content);
+                }
                 return respuesta.StatusCode == HttpStatusCode.OK;
             }
             catch (Exception e)
                 {
-                    Opcion.Log(",log_sucursal.txt",e.Message);
+                    Opcion.Log(Config.Log.Interno.Sucursal,e.Message);
                 }
             return false;
         }

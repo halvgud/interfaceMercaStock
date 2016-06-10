@@ -19,20 +19,24 @@ namespace ServicioMercastock.Data
                         Constantes.Http.TipoDeContenido.Json);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content);
-                        }
-                        else
-                        {
-                            Opcion.Log("log_categoria_local.txt", response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.Categoria, response.Content);
+                                break;
                         }
 
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_categoria_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.Categoria, e.Message);
                 }
             }
         }
@@ -56,13 +60,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_categoria_externa.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Categoria, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_categoria_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Categoria, e.Message);
                 }
             }
         }

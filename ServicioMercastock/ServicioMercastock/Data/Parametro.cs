@@ -26,13 +26,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_parametro_local.txt",response.Content);
+                            Opcion.Log(Config.Log.Interno.Parametro,response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_parametro_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.Parametro, e.Message);
                     throw;
                 }
             }
@@ -55,13 +55,17 @@ namespace ServicioMercastock.Data
 
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content);
-                        }
-                        else
-                        {
-                            Opcion.Log("log_parametro_externa.txt", response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Externo.Parametro, response.Content);
+                                break;
                         }
                         
                     });
@@ -69,7 +73,7 @@ namespace ServicioMercastock.Data
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
-                    Opcion.Log("log_parametro_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Parametro, e.Message);
                 }
             }
         }

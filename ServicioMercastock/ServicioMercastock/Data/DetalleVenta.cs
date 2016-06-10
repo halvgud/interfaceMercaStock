@@ -21,20 +21,24 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Venta.Externa.ObtenerIdVenta(), ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
-                        if (response.StatusCode == HttpStatusCode.OK)
+                        switch (response.StatusCode)
                         {
-                            callback(response.Content);
-                        }
-                        else
-                        {
-                            Opcion.Log("log_detalleventa_local.txt", response.Content);
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.DetalleVenta, response.Content);
+                                break;
                         }
 
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_detalleventa_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.DetalleVenta, e.Message);
                 }
             }
         }
@@ -58,13 +62,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_detalleventa_externa.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.DetalleVenta, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_detalleventa_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.DetalleVenta, e.Message);
                 }
             }
         }

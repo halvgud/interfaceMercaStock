@@ -26,9 +26,7 @@ namespace ServicioMercastock.Data
                             {
                                 GcmPushNotification.EnviarNotificacion(json,Opcion.LimpiarJson(x), y =>
                                 {
-                                    Console.WriteLine(y);
-                                    Opcion.Log("Log_GCM.txt", y);
-
+                                    Externa.Actualizar(Console.WriteLine);
                                 });
                             });
                             callback(response.Content);
@@ -36,13 +34,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_inventario_local.txt",response.Content);
+                            Opcion.Log(Config.Log.Interno.Inventario1,response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_inventario_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Interno.Inventario1, e.Message);
                 }
             }
             public static void Exportar(Action<string> callback)
@@ -56,20 +54,49 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
+                        switch (response.StatusCode)
+                        {
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.Inventario1, response.Content);
+                                break;
+                        }
+                    }); 
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Interno.Inventario1, e.Message);
+                }
+            }
+            public static void Actualizar(Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.Inventario.UrlActualizar,
+                        Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
+                        Constantes.Http.TipoDeContenido.Json);
+                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
+                    rest.Peticion.AddJsonBody(new { idSucursal = Config.Externa.Sucursal.IdSucursal });
+                    rest.Cliente.ExecuteAsync(rest.Peticion, response =>
+                    {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             callback(response.Content);
-
                         }
                         else
                         {
-                            Opcion.Log("log_inventario_local.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_inventario_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
                 }
             }
         }
@@ -93,13 +120,13 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log("log_inventario_local.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_inventario_local.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
                 }
             }
             public static void Exportar(Action<string> callback)
@@ -114,19 +141,51 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddJsonBody(new { idSucursal = Config.Externa.Sucursal.IdSucursal });
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
+                        switch (response.StatusCode)
+                        {
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
+                                break;
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
+                }
+            }
+
+            public static void Actualizar(Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.Inventario.UrlActualizar,
+                        Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
+                        Constantes.Http.TipoDeContenido.Json);
+                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
+                    rest.Peticion.AddJsonBody(new { idSucursal = Config.Externa.Sucursal.IdSucursal });
+                    rest.Cliente.ExecuteAsync(rest.Peticion, response =>
+                    {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             callback(response.Content);
                         }
                         else
                         {
-                            Opcion.Log("log_inventario_externa.txt", response.Content);
+                            Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log("log_inventario_externa.txt", e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
                 }
             }
         }

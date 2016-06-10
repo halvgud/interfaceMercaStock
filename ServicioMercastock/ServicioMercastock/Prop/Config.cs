@@ -1,7 +1,38 @@
-﻿namespace ServicioMercastock.Prop
+﻿using System;
+
+namespace ServicioMercastock.Prop
 {
    public class Config
     {
+       public class Log
+       {
+           public class Interno
+           {
+                public static string Articulo { get; set; }
+                public static string Categoria { get; set; }
+                public static string Departamento { get; set; }
+                public static string DetalleVenta { get; set; }
+                public static string Gcm { get; set; }
+                public static string Inventario1 { get; set; }
+                public static string Parametro { get; set; }
+                public static string Sucursal { get; set; }
+                public static string Usuario { get; set; }
+                public static string Venta { get; set; }
+            }
+
+           public class Externo
+           {
+                public static string Articulo { get; set; }
+                public static string Categoria { get; set; }
+                public static string Departamento { get; set; }
+                public static string DetalleVenta { get; set; }
+                public static string Inventario2 { get; set; }
+                public static string Parametro { get; set; }
+                public static string Sucursal { get; set; }
+                public static string Usuario { get; set; }
+                public static string Venta { get; set; }
+            }
+       }
        public class General
        {
            public class Tiempo
@@ -16,6 +47,19 @@
                 public static int DetalleVenta { get; set; }
                 public static int Inventario1 { get; set; }
                 public static int Inventario2 { get; set; }
+            }
+
+           public class Activacion
+           {
+                public static bool Usuario { get; set; }
+                public static bool Articulo { get; set; }
+                public static bool Categoria { get; set; }
+                public static bool Departamento { get; set; }
+                public static bool Parametro { get; set; }
+                public static bool Venta { get; set; }
+                public static bool DetalleVenta { get; set; }
+                public static bool Inventario1 { get; set; }
+                public static bool Inventario2 { get; set; }
             }
 
            public class Gcm
@@ -88,6 +132,7 @@
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
+                public static string UrlActualizar { get; set; }
             }
         }
 
@@ -128,6 +173,7 @@
                 public static string User { get; set; }
                 public static string Password { get; set; }
                 public static string ClaveApi { get; set; }
+                public static string Nombre { get; set; }
            } 
            public class DetalleVenta
            {
@@ -142,6 +188,7 @@
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
+                public static string UrlActualizar { get; set; }
             }
         }
     }

@@ -10,3 +10,16 @@ C:\Users\Ryu\documents\visual studio 2015\Projects\ServicioMercastock\ServicioMe
 C:\Users\Ryu\documents\visual studio 2015\Projects\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.exe
 C:\Users\Ryu\documents\visual studio 2015\Projects\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.pdb
 C:\Users\Ryu\documents\visual studio 2015\Projects\ServicioMercastock\ServicioMercastock\bin\Debug\ServicioMercastock.pdb
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\ServicioMercastock.exe.config
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.exe
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.pdb
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\ServicioMercastock.exe
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\ServicioMercastock.pdb
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\Newtonsoft.Json.dll
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\RestSharp.dll
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\Newtonsoft.Json.xml
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\bin\Debug\RestSharp.xml
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.csprojResolveAssemblyReference.cache
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.Form1.resources
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.Properties.Resources.resources
+C:\GIT\interfaceMercaStock\ServicioMercastock\ServicioMercastock\obj\Debug\ServicioMercastock.csproj.GenerateResource.Cache

@@ -27,14 +27,14 @@ namespace ServicioMercastock.Data
                     }
                     else
                     {
-                        Opcion.Log("log_GCM.txt", response.Content);
+                        Opcion.Log(Config.Log.Interno.Gcm, response.Content);
                     }
 
                 });
             }
             catch (Exception e)
             {
-                Opcion.Log("log_GCM.txt", e.Message);
+                Opcion.Log(Config.Log.Interno.Gcm, e.Message);
             }
         }
         public static void EnviarNotificacion(string categorias,string deviceRegIds,Action<string> callback)
@@ -42,6 +42,7 @@ namespace ServicioMercastock.Data
             //TODO Considerar separar el json object
             var a = JArray.Parse(JObject.Parse(deviceRegIds).Property("data").Value.ToString());
             var b = JArray.Parse(JObject.Parse(categorias).Property("data").Value.ToString());
+
             var tRequest = WebRequest.Create(Config.General.Gcm.UrlRequest);
             tRequest.Method = Constantes.Http.MetodoHttp.Post;
             tRequest.ContentType =Constantes.Http.TipoDeContenido.Json;
@@ -64,6 +65,8 @@ namespace ServicioMercastock.Data
             postdata.Add(Constantes.Gcm.Parametro.DelayWhileIdle, Config.General.GcmParametro.RetardoMientrasInactivo);
             data.Add(Constantes.Gcm.Parametro.Message, Config.General.GcmParametro.Mensaje);
             data.Add(Constantes.Gcm.Parametro.Data, arreglo2);
+            data.Add("idSucursal",Config.Externa.Sucursal.IdSucursal);
+            data.Add("descripcionSucursal",Config.Externa.Sucursal.Nombre);
             data.Add(Constantes.Gcm.Parametro.Time, DateTime.Now);
             postdata.Add(Constantes.Gcm.Parametro.Data, data);
             postdata.Add(Constantes.Gcm.Parametro.RegistrationIds,arreglo);
