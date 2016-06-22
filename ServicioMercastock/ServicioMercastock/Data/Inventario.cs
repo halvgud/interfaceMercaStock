@@ -35,6 +35,7 @@ namespace ServicioMercastock.Data
                         else
                         {
                             Opcion.Log(Config.Log.Interno.Inventario1,response.Content);
+                            callback("CONTINUAR");
                         }
                     });
                 }
@@ -60,9 +61,12 @@ namespace ServicioMercastock.Data
                                 callback(response.Content);
                                 break;
                             case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
                                 break;
                             default:
+                                
                                 Opcion.Log(Config.Log.Interno.Inventario1, response.Content);
+                                callback("CONTINUAR");
                                 break;
                         }
                     }); 
@@ -72,7 +76,7 @@ namespace ServicioMercastock.Data
                     Opcion.Log(Config.Log.Interno.Inventario1, e.Message);
                 }
             }
-            public static void Actualizar(Action<string> callback)
+            public static void Actualizar(string json,Action<string> callback)
             {
                 try
                 {
@@ -81,7 +85,7 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
-                    rest.Peticion.AddJsonBody(new { idSucursal = Config.Externa.Sucursal.IdSucursal });
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -91,6 +95,7 @@ namespace ServicioMercastock.Data
                         else
                         {
                             Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
+                            callback("CONTINUAR");
                         }
                     });
                 }
@@ -116,6 +121,10 @@ namespace ServicioMercastock.Data
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
+                            Local.Actualizar(json, x =>
+                            {
+                                Console.WriteLine(x);
+                            });
                             callback(response.Content);
                         }
                         else
@@ -151,6 +160,7 @@ namespace ServicioMercastock.Data
                                 break;
                             default:
                                 Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
+                                callback("CONTINUAR");
                                 break;
                         }
                     });
@@ -180,6 +190,7 @@ namespace ServicioMercastock.Data
                         else
                         {
                             Opcion.Log(Config.Log.Externo.Inventario2, response.Content);
+                            callback("CONTINUAR");
                         }
                     });
                 }

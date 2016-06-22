@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 namespace ServicioMercastock.Prop
 {
    public class Config
@@ -18,6 +17,7 @@ namespace ServicioMercastock.Prop
                 public static string Sucursal { get; set; }
                 public static string Usuario { get; set; }
                 public static string Venta { get; set; }
+                public static string VentaTipoPago { get; set; }
             }
 
            public class Externo
@@ -31,6 +31,7 @@ namespace ServicioMercastock.Prop
                 public static string Sucursal { get; set; }
                 public static string Usuario { get; set; }
                 public static string Venta { get; set; }
+                public static string VentaTipoPago { get; set; }
             }
        }
        public class General
@@ -39,6 +40,7 @@ namespace ServicioMercastock.Prop
            {
                 public static int Pantalla { get; set; }
                 public static int Usuario { get; set; }
+                public static int Usuario2 { get; set; }
                 public static int Articulo { get; set; }
                 public static int Categoria { get; set; }
                 public static int Departamento { get; set; }
@@ -47,11 +49,13 @@ namespace ServicioMercastock.Prop
                 public static int DetalleVenta { get; set; }
                 public static int Inventario1 { get; set; }
                 public static int Inventario2 { get; set; }
-            }
+                public static int VentaTipoPago { get; set; }
+           }
 
            public class Activacion
            {
                 public static bool Usuario { get; set; }
+                public static bool Usuario2 { get; set; }
                 public static bool Articulo { get; set; }
                 public static bool Categoria { get; set; }
                 public static bool Departamento { get; set; }
@@ -60,6 +64,7 @@ namespace ServicioMercastock.Prop
                 public static bool DetalleVenta { get; set; }
                 public static bool Inventario1 { get; set; }
                 public static bool Inventario2 { get; set; }
+                public static bool VentaTipoPago { get; set; }
             }
 
            public class Gcm
@@ -92,6 +97,7 @@ namespace ServicioMercastock.Prop
             public class Usuario
             {
                 public static string UrlImportar { get; set; }
+                public static string UrlExportar { get; set; }
             }
 
             public class Parametro
@@ -134,6 +140,11 @@ namespace ServicioMercastock.Prop
                 public static string UrlExportar { get; set; }
                 public static string UrlActualizar { get; set; }
             }
+
+            public class VentaTipoPago
+            {
+                public static string UrlExportar { get; set; }
+            }
         }
 
        public class Externa
@@ -142,10 +153,16 @@ namespace ServicioMercastock.Prop
            {
                public static string UrlApi { get; set; }
            }
+
+           public class DashBoard
+           {
+               public static string UrlActualizar { get; set; }
+           }
            public class Usuario
            {
-                    public static string UrlExportar { get; set; }
-           }
+                public static string UrlExportar { get; set; }
+                public static string UrlImportar { get; set; }
+            }
             public class Parametro
             {
                 public static string UrlExportar { get; set; }
@@ -178,6 +195,7 @@ namespace ServicioMercastock.Prop
            public class DetalleVenta
            {
                public static string UrlImportar { get; set; }
+                public static string UrlMaximaIdVenta { get; set; }
            }
             public class Venta
             {
@@ -189,6 +207,11 @@ namespace ServicioMercastock.Prop
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
                 public static string UrlActualizar { get; set; }
+            }
+            public class VentaTipoPago
+            {
+                public static string UrlImportar { get; set; }
+                public static string UrlMaximaIdVenta { get; set; }
             }
         }
     }

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DashBoard.cs" />
     <Compile Include="Data\GcmPushNotification.cs" />
     <Compile Include="Data\Articulo.cs" />
     <Compile Include="Data\Categoria.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Data\Rest.cs" />
     <Compile Include="Data\Sucursal.cs" />
     <Compile Include="Data\Venta.cs" />
+    <Compile Include="Data\VentaTipoPago.cs" />
     <Compile Include="Prop\Config.cs" />
     <Compile Include="Prop\Constantes.cs" />
     <Compile Include="Data\Usuario.cs" />

@@ -29,6 +29,7 @@ namespace ServicioMercastock.Data
                                 break;
                             default:
                                 Opcion.Log(Config.Log.Interno.Categoria, response.Content);
+                                callback("CONTINUAR");
                                 break;
                         }
 
@@ -37,6 +38,7 @@ namespace ServicioMercastock.Data
                 catch (Exception e)
                 {
                     Opcion.Log(Config.Log.Interno.Categoria, e.Message);
+                    callback("CONTINUAR");
                 }
             }
         }
@@ -61,12 +63,14 @@ namespace ServicioMercastock.Data
                         else
                         {
                             Opcion.Log(Config.Log.Externo.Categoria, response.Content);
+                            callback("CONTINUAR");
                         }
                     });
                 }
                 catch (Exception e)
                 {
                     Opcion.Log(Config.Log.Externo.Categoria, e.Message);
+                    callback("CONTINUAR");
                 }
             }
         }

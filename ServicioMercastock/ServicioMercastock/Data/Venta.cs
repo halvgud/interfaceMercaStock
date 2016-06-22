@@ -18,7 +18,7 @@ namespace ServicioMercastock.Data
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
-                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Externa.ObtenerIdVenta(), ParameterType.RequestBody);
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Externa.ObtenerIdVenta(Config.Externa.Venta.UrlMaximaIdVenta), ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         switch (response.StatusCode)
@@ -32,6 +32,7 @@ namespace ServicioMercastock.Data
                                 break;
                             default:
                                 Opcion.Log(Config.Log.Interno.Venta, response.Content);
+                                callback("CONTINUAR");
                                 break;
                         }
 
@@ -46,11 +47,11 @@ namespace ServicioMercastock.Data
 
         public class Externa
         {
-            public static string ObtenerIdVenta()
+            public static string ObtenerIdVenta(string url)
             {
                 try
                 {
-                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.Venta.UrlMaximaIdVenta, Method.POST);
+                    var rest = new Rest(Config.Externa.Api.UrlApi,url, Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Peticion.AddJsonBody(new { idSucursal = Config.Externa.Sucursal.IdSucursal });
@@ -81,12 +82,14 @@ namespace ServicioMercastock.Data
                         else
                         {
                             Opcion.Log(Config.Log.Externo.Venta, response.Content);
+                            callback("CONTINUAR");
                         }
                     });
                 }
                 catch (Exception e)
                 {
                     Opcion.Log(Config.Log.Externo.Venta, e.Message);
+                    callback("CONTINUAR");
                 }
             }
         }

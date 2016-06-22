@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label29 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.statusUsuario = new System.Windows.Forms.Label();
@@ -54,10 +55,19 @@
             this.estadoDetalleVenta = new System.Windows.Forms.Label();
             this.estadoInventario1 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.statusDepartamento = new System.Windows.Forms.Label();
+            this.estadoDepartamento = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.statusUsuario2 = new System.Windows.Forms.Label();
+            this.estadoUsuario2 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.statusInventario2 = new System.Windows.Forms.Label();
+            this.estadoInventario2 = new System.Windows.Forms.Label();
+            this.statusVentaTipoPago = new System.Windows.Forms.Label();
+            this.estadoVentaTipoPago = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.LocalUrlInventario = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +89,6 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.LocalUrlArticulo = new System.Windows.Forms.Label();
             this.LocalUrlCategoria = new System.Windows.Forms.Label();
             this.LocalUrlVenta = new System.Windows.Forms.Label();
@@ -89,20 +98,10 @@
             this.ExternoUrlCategoria = new System.Windows.Forms.Label();
             this.ExternoUrlVenta = new System.Windows.Forms.Label();
             this.ExternoUrlDetalleVenta = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.LocalUrlInventario = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.ExternoUrlInventario = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.LmemoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.memoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
-            this.bwUsuario = new System.ComponentModel.BackgroundWorker();
-            this.bwParametro = new System.ComponentModel.BackgroundWorker();
-            this.bwArticulo = new System.ComponentModel.BackgroundWorker();
-            this.bwCategoria = new System.ComponentModel.BackgroundWorker();
-            this.bwDepartamento = new System.ComponentModel.BackgroundWorker();
-            this.bwVenta = new System.ComponentModel.BackgroundWorker();
-            this.bwDetalleVenta = new System.ComponentModel.BackgroundWorker();
-            this.bwInventario1 = new System.ComponentModel.BackgroundWorker();
-            this.bwInventario2 = new System.ComponentModel.BackgroundWorker();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.LocalUrlInventario2 = new System.Windows.Forms.Label();
@@ -112,9 +111,9 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -128,13 +127,26 @@
             this.TiempoParametro = new System.Windows.Forms.Label();
             this.TiempoDetalleVenta = new System.Windows.Forms.Label();
             this.TiempoInventario2 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.LmemoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.memoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusTiempoDeReinicio = new System.Windows.Forms.ToolStripStatusLabel();
+            this.bwUsuario = new System.ComponentModel.BackgroundWorker();
+            this.bwParametro = new System.ComponentModel.BackgroundWorker();
+            this.bwArticulo = new System.ComponentModel.BackgroundWorker();
+            this.bwCategoria = new System.ComponentModel.BackgroundWorker();
+            this.bwDepartamento = new System.ComponentModel.BackgroundWorker();
+            this.bwVenta = new System.ComponentModel.BackgroundWorker();
+            this.bwDetalleVenta = new System.ComponentModel.BackgroundWorker();
+            this.bwInventario1 = new System.ComponentModel.BackgroundWorker();
+            this.bwInventario2 = new System.ComponentModel.BackgroundWorker();
             this.bwFormulario = new System.ComponentModel.BackgroundWorker();
-            this.statusInventario2 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.estadoInventario2 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.statusDepartamento = new System.Windows.Forms.Label();
-            this.estadoDepartamento = new System.Windows.Forms.Label();
+            this.bwUsuario2 = new System.ComponentModel.BackgroundWorker();
+            this.bwVentaTipoPago = new System.ComponentModel.BackgroundWorker();
+            this.label30 = new System.Windows.Forms.Label();
+            this.TiempoVentaTipoPago = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -176,7 +188,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.55216F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.68193F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.01272F));
-            this.tableLayoutPanel3.Controls.Add(this.label49, 0, 10);
+            this.tableLayoutPanel3.Controls.Add(this.label29, 0, 11);
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.statusUsuario, 1, 2);
@@ -200,28 +212,44 @@
             this.tableLayoutPanel3.Controls.Add(this.estadoDetalleVenta, 2, 8);
             this.tableLayoutPanel3.Controls.Add(this.estadoInventario1, 2, 9);
             this.tableLayoutPanel3.Controls.Add(this.label34, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.statusInventario2, 1, 10);
-            this.tableLayoutPanel3.Controls.Add(this.estadoInventario2, 2, 10);
             this.tableLayoutPanel3.Controls.Add(this.label24, 0, 6);
             this.tableLayoutPanel3.Controls.Add(this.statusDepartamento, 1, 6);
             this.tableLayoutPanel3.Controls.Add(this.estadoDepartamento, 2, 6);
+            this.tableLayoutPanel3.Controls.Add(this.label28, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.statusUsuario2, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.estadoUsuario2, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.label49, 0, 10);
+            this.tableLayoutPanel3.Controls.Add(this.statusInventario2, 1, 10);
+            this.tableLayoutPanel3.Controls.Add(this.estadoInventario2, 2, 10);
+            this.tableLayoutPanel3.Controls.Add(this.statusVentaTipoPago, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.estadoVentaTipoPago, 2, 11);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 11;
+            this.tableLayoutPanel3.RowCount = 12;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 9F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(393, 380);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 231);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(88, 13);
+            this.label29.TabIndex = 37;
+            this.label29.Text = "Async Tipo Pago";
             // 
             // label7
             // 
@@ -235,7 +263,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 29);
+            this.label10.Location = new System.Drawing.Point(3, 36);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 13);
             this.label10.TabIndex = 0;
@@ -244,7 +272,7 @@
             // statusUsuario
             // 
             this.statusUsuario.AutoSize = true;
-            this.statusUsuario.Location = new System.Drawing.Point(115, 29);
+            this.statusUsuario.Location = new System.Drawing.Point(115, 36);
             this.statusUsuario.Name = "statusUsuario";
             this.statusUsuario.Size = new System.Drawing.Size(31, 13);
             this.statusUsuario.TabIndex = 3;
@@ -253,7 +281,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(3, 46);
+            this.label11.Location = new System.Drawing.Point(3, 53);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(87, 13);
             this.label11.TabIndex = 10;
@@ -262,7 +290,7 @@
             // statusArticulo
             // 
             this.statusArticulo.AutoSize = true;
-            this.statusArticulo.Location = new System.Drawing.Point(115, 68);
+            this.statusArticulo.Location = new System.Drawing.Point(115, 72);
             this.statusArticulo.Name = "statusArticulo";
             this.statusArticulo.Size = new System.Drawing.Size(31, 13);
             this.statusArticulo.TabIndex = 9;
@@ -271,7 +299,7 @@
             // statusParametro
             // 
             this.statusParametro.AutoSize = true;
-            this.statusParametro.Location = new System.Drawing.Point(115, 46);
+            this.statusParametro.Location = new System.Drawing.Point(115, 53);
             this.statusParametro.Name = "statusParametro";
             this.statusParametro.Size = new System.Drawing.Size(31, 13);
             this.statusParametro.TabIndex = 11;
@@ -280,7 +308,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(3, 68);
+            this.label15.Location = new System.Drawing.Point(3, 72);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(74, 13);
             this.label15.TabIndex = 12;
@@ -361,7 +389,7 @@
             // estadoUsuario
             // 
             this.estadoUsuario.AutoSize = true;
-            this.estadoUsuario.Location = new System.Drawing.Point(239, 29);
+            this.estadoUsuario.Location = new System.Drawing.Point(239, 36);
             this.estadoUsuario.Name = "estadoUsuario";
             this.estadoUsuario.Size = new System.Drawing.Size(57, 13);
             this.estadoUsuario.TabIndex = 20;
@@ -370,7 +398,7 @@
             // estadoParametro
             // 
             this.estadoParametro.AutoSize = true;
-            this.estadoParametro.Location = new System.Drawing.Point(239, 46);
+            this.estadoParametro.Location = new System.Drawing.Point(239, 53);
             this.estadoParametro.Name = "estadoParametro";
             this.estadoParametro.Size = new System.Drawing.Size(57, 13);
             this.estadoParametro.TabIndex = 21;
@@ -379,7 +407,7 @@
             // estadoArticulo
             // 
             this.estadoArticulo.AutoSize = true;
-            this.estadoArticulo.Location = new System.Drawing.Point(239, 68);
+            this.estadoArticulo.Location = new System.Drawing.Point(239, 72);
             this.estadoArticulo.Name = "estadoArticulo";
             this.estadoArticulo.Size = new System.Drawing.Size(57, 13);
             this.estadoArticulo.TabIndex = 22;
@@ -430,6 +458,105 @@
             this.label34.TabIndex = 27;
             this.label34.Text = "Estado";
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(3, 115);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(106, 13);
+            this.label24.TabIndex = 31;
+            this.label24.Text = "Async Departamento";
+            // 
+            // statusDepartamento
+            // 
+            this.statusDepartamento.AutoSize = true;
+            this.statusDepartamento.Location = new System.Drawing.Point(115, 115);
+            this.statusDepartamento.Name = "statusDepartamento";
+            this.statusDepartamento.Size = new System.Drawing.Size(31, 13);
+            this.statusDepartamento.TabIndex = 32;
+            this.statusDepartamento.Text = "Valor";
+            // 
+            // estadoDepartamento
+            // 
+            this.estadoDepartamento.AutoSize = true;
+            this.estadoDepartamento.Location = new System.Drawing.Point(239, 115);
+            this.estadoDepartamento.Name = "estadoDepartamento";
+            this.estadoDepartamento.Size = new System.Drawing.Size(57, 13);
+            this.estadoDepartamento.TabIndex = 33;
+            this.estadoDepartamento.Text = "INACTIVO";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(3, 20);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(75, 13);
+            this.label28.TabIndex = 34;
+            this.label28.Text = "Async Usuario";
+            // 
+            // statusUsuario2
+            // 
+            this.statusUsuario2.AutoSize = true;
+            this.statusUsuario2.Location = new System.Drawing.Point(115, 20);
+            this.statusUsuario2.Name = "statusUsuario2";
+            this.statusUsuario2.Size = new System.Drawing.Size(31, 13);
+            this.statusUsuario2.TabIndex = 35;
+            this.statusUsuario2.Text = "Valor";
+            // 
+            // estadoUsuario2
+            // 
+            this.estadoUsuario2.AutoSize = true;
+            this.estadoUsuario2.Location = new System.Drawing.Point(239, 20);
+            this.estadoUsuario2.Name = "estadoUsuario2";
+            this.estadoUsuario2.Size = new System.Drawing.Size(57, 13);
+            this.estadoUsuario2.TabIndex = 36;
+            this.estadoUsuario2.Text = "INACTIVO";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(3, 211);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(86, 13);
+            this.label49.TabIndex = 29;
+            this.label49.Text = "Async Inventario";
+            // 
+            // statusInventario2
+            // 
+            this.statusInventario2.AutoSize = true;
+            this.statusInventario2.Location = new System.Drawing.Point(115, 211);
+            this.statusInventario2.Name = "statusInventario2";
+            this.statusInventario2.Size = new System.Drawing.Size(31, 13);
+            this.statusInventario2.TabIndex = 28;
+            this.statusInventario2.Text = "Valor";
+            // 
+            // estadoInventario2
+            // 
+            this.estadoInventario2.AutoSize = true;
+            this.estadoInventario2.Location = new System.Drawing.Point(239, 211);
+            this.estadoInventario2.Name = "estadoInventario2";
+            this.estadoInventario2.Size = new System.Drawing.Size(57, 13);
+            this.estadoInventario2.TabIndex = 30;
+            this.estadoInventario2.Text = "INACTIVO";
+            // 
+            // statusVentaTipoPago
+            // 
+            this.statusVentaTipoPago.AutoSize = true;
+            this.statusVentaTipoPago.Location = new System.Drawing.Point(115, 231);
+            this.statusVentaTipoPago.Name = "statusVentaTipoPago";
+            this.statusVentaTipoPago.Size = new System.Drawing.Size(31, 13);
+            this.statusVentaTipoPago.TabIndex = 38;
+            this.statusVentaTipoPago.Text = "Valor";
+            // 
+            // estadoVentaTipoPago
+            // 
+            this.estadoVentaTipoPago.AutoSize = true;
+            this.estadoVentaTipoPago.Location = new System.Drawing.Point(239, 231);
+            this.estadoVentaTipoPago.Name = "estadoVentaTipoPago";
+            this.estadoVentaTipoPago.Size = new System.Drawing.Size(57, 13);
+            this.estadoVentaTipoPago.TabIndex = 39;
+            this.estadoVentaTipoPago.Text = "INACTIVO";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
@@ -448,6 +575,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.8342F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.label30, 0, 17);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 2);
@@ -501,16 +629,17 @@
             this.tableLayoutPanel2.Controls.Add(this.TiempoUsuario, 1, 13);
             this.tableLayoutPanel2.Controls.Add(this.TiempoDepartamento, 1, 14);
             this.tableLayoutPanel2.Controls.Add(this.TiempoVenta, 1, 15);
-            this.tableLayoutPanel2.Controls.Add(this.TiempoInventario1, 1, 16);
             this.tableLayoutPanel2.Controls.Add(this.TiempoArticulo, 3, 12);
             this.tableLayoutPanel2.Controls.Add(this.TiempoCategoria, 3, 13);
             this.tableLayoutPanel2.Controls.Add(this.TiempoParametro, 3, 14);
             this.tableLayoutPanel2.Controls.Add(this.TiempoDetalleVenta, 3, 15);
             this.tableLayoutPanel2.Controls.Add(this.TiempoInventario2, 3, 16);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoVentaTipoPago, 1, 17);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoInventario1, 1, 16);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 19;
+            this.tableLayoutPanel2.RowCount = 20;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -528,29 +657,12 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 174F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 380);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // LocalUrlInventario
-            // 
-            this.LocalUrlInventario.AutoSize = true;
-            this.LocalUrlInventario.Location = new System.Drawing.Point(105, 165);
-            this.LocalUrlInventario.Name = "LocalUrlInventario";
-            this.LocalUrlInventario.Size = new System.Drawing.Size(31, 13);
-            this.LocalUrlInventario.TabIndex = 32;
-            this.LocalUrlInventario.Text = "Valor";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(3, 165);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(70, 13);
-            this.label23.TabIndex = 22;
-            this.label23.Text = "Url Inventario";
             // 
             // label3
             // 
@@ -741,15 +853,6 @@
             this.label22.TabIndex = 21;
             this.label22.Text = "Url Detalle Venta";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(198, 165);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(70, 13);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Url Inventario";
-            // 
             // LocalUrlArticulo
             // 
             this.LocalUrlArticulo.AutoSize = true;
@@ -831,6 +934,33 @@
             this.ExternoUrlDetalleVenta.TabIndex = 31;
             this.ExternoUrlDetalleVenta.Text = "Valor";
             // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(3, 165);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(70, 13);
+            this.label23.TabIndex = 22;
+            this.label23.Text = "Url Inventario";
+            // 
+            // LocalUrlInventario
+            // 
+            this.LocalUrlInventario.AutoSize = true;
+            this.LocalUrlInventario.Location = new System.Drawing.Point(105, 165);
+            this.LocalUrlInventario.Name = "LocalUrlInventario";
+            this.LocalUrlInventario.Size = new System.Drawing.Size(31, 13);
+            this.LocalUrlInventario.TabIndex = 32;
+            this.LocalUrlInventario.Text = "Valor";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(198, 165);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(70, 13);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Url Inventario";
+            // 
             // ExternoUrlInventario
             // 
             this.ExternoUrlInventario.AutoSize = true;
@@ -839,81 +969,6 @@
             this.ExternoUrlInventario.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlInventario.TabIndex = 33;
             this.ExternoUrlInventario.Text = "Valor";
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LmemoriaRAM,
-            this.memoriaRAM});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 405);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(809, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // LmemoriaRAM
-            // 
-            this.LmemoriaRAM.Name = "LmemoriaRAM";
-            this.LmemoriaRAM.Size = new System.Drawing.Size(87, 17);
-            this.LmemoriaRAM.Text = "Memoria RAM:";
-            // 
-            // memoriaRAM
-            // 
-            this.memoriaRAM.Name = "memoriaRAM";
-            this.memoriaRAM.Size = new System.Drawing.Size(12, 17);
-            this.memoriaRAM.Text = "-";
-            // 
-            // bwUsuario
-            // 
-            this.bwUsuario.WorkerReportsProgress = true;
-            this.bwUsuario.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwUsuario_DoWork);
-            // 
-            // bwParametro
-            // 
-            this.bwParametro.WorkerReportsProgress = true;
-            this.bwParametro.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bWParametro_DoWork);
-            // 
-            // bwArticulo
-            // 
-            this.bwArticulo.WorkerReportsProgress = true;
-            this.bwArticulo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwArticulo_DoWork);
-            // 
-            // bwCategoria
-            // 
-            this.bwCategoria.WorkerReportsProgress = true;
-            this.bwCategoria.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwCategoria_DoWork);
-            // 
-            // bwDepartamento
-            // 
-            this.bwDepartamento.WorkerReportsProgress = true;
-            this.bwDepartamento.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDepartamento_DoWork);
-            // 
-            // bwVenta
-            // 
-            this.bwVenta.WorkerReportsProgress = true;
-            this.bwVenta.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVenta_DoWork);
-            // 
-            // bwDetalleVenta
-            // 
-            this.bwDetalleVenta.WorkerReportsProgress = true;
-            this.bwDetalleVenta.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDetalleVenta_DoWork);
-            // 
-            // bwInventario1
-            // 
-            this.bwInventario1.WorkerReportsProgress = true;
-            this.bwInventario1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario1_DoWork);
-            // 
-            // bwInventario2
-            // 
-            this.bwInventario2.WorkerReportsProgress = true;
-            this.bwInventario2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario2_DoWork);
             // 
             // label35
             // 
@@ -996,15 +1051,6 @@
             this.label41.TabIndex = 42;
             this.label41.Text = "Categoria";
             // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(3, 285);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(35, 13);
-            this.label42.TabIndex = 43;
-            this.label42.Text = "Venta";
-            // 
             // label43
             // 
             this.label43.AutoSize = true;
@@ -1022,6 +1068,15 @@
             this.label44.Size = new System.Drawing.Size(74, 13);
             this.label44.TabIndex = 46;
             this.label44.Text = "Departamento";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(3, 285);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(35, 13);
+            this.label42.TabIndex = 43;
+            this.label42.Text = "Venta";
             // 
             // label45
             // 
@@ -1140,64 +1195,127 @@
             this.TiempoInventario2.TabIndex = 59;
             this.TiempoInventario2.Text = "Valor";
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.LmemoriaRAM,
+            this.memoriaRAM,
+            this.toolStripStatusLabel1,
+            this.statusTiempoDeReinicio});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 405);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(809, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // LmemoriaRAM
+            // 
+            this.LmemoriaRAM.Name = "LmemoriaRAM";
+            this.LmemoriaRAM.Size = new System.Drawing.Size(87, 17);
+            this.LmemoriaRAM.Text = "Memoria RAM:";
+            // 
+            // memoriaRAM
+            // 
+            this.memoriaRAM.Name = "memoriaRAM";
+            this.memoriaRAM.Size = new System.Drawing.Size(12, 17);
+            this.memoriaRAM.Text = "-";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(162, 17);
+            this.toolStripStatusLabel1.Text = "Tiempo de Espera de Reinicio";
+            // 
+            // statusTiempoDeReinicio
+            // 
+            this.statusTiempoDeReinicio.Name = "statusTiempoDeReinicio";
+            this.statusTiempoDeReinicio.Size = new System.Drawing.Size(12, 17);
+            this.statusTiempoDeReinicio.Text = "-";
+            // 
+            // bwUsuario
+            // 
+            this.bwUsuario.WorkerReportsProgress = true;
+            this.bwUsuario.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwUsuario_DoWork);
+            // 
+            // bwParametro
+            // 
+            this.bwParametro.WorkerReportsProgress = true;
+            this.bwParametro.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bWParametro_DoWork);
+            // 
+            // bwArticulo
+            // 
+            this.bwArticulo.WorkerReportsProgress = true;
+            this.bwArticulo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwArticulo_DoWork);
+            // 
+            // bwCategoria
+            // 
+            this.bwCategoria.WorkerReportsProgress = true;
+            this.bwCategoria.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwCategoria_DoWork);
+            // 
+            // bwDepartamento
+            // 
+            this.bwDepartamento.WorkerReportsProgress = true;
+            this.bwDepartamento.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDepartamento_DoWork);
+            // 
+            // bwVenta
+            // 
+            this.bwVenta.WorkerReportsProgress = true;
+            this.bwVenta.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVenta_DoWork);
+            // 
+            // bwDetalleVenta
+            // 
+            this.bwDetalleVenta.WorkerReportsProgress = true;
+            this.bwDetalleVenta.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwDetalleVenta_DoWork);
+            // 
+            // bwInventario1
+            // 
+            this.bwInventario1.WorkerReportsProgress = true;
+            this.bwInventario1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario1_DoWork);
+            // 
+            // bwInventario2
+            // 
+            this.bwInventario2.WorkerReportsProgress = true;
+            this.bwInventario2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwInventario2_DoWork);
+            // 
             // bwFormulario
             // 
             this.bwFormulario.WorkerReportsProgress = true;
             this.bwFormulario.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwFormulario_DoWork);
             // 
-            // statusInventario2
+            // bwUsuario2
             // 
-            this.statusInventario2.AutoSize = true;
-            this.statusInventario2.Location = new System.Drawing.Point(115, 211);
-            this.statusInventario2.Name = "statusInventario2";
-            this.statusInventario2.Size = new System.Drawing.Size(31, 13);
-            this.statusInventario2.TabIndex = 28;
-            this.statusInventario2.Text = "Valor";
+            this.bwUsuario2.WorkerReportsProgress = true;
+            this.bwUsuario2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwUsuario2_DoWork);
             // 
-            // label49
+            // bwVentaTipoPago
             // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(3, 211);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(86, 13);
-            this.label49.TabIndex = 29;
-            this.label49.Text = "Async Inventario";
+            this.bwVentaTipoPago.WorkerReportsProgress = true;
+            this.bwVentaTipoPago.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVentaTipoPago_DoWork);
             // 
-            // estadoInventario2
+            // label30
             // 
-            this.estadoInventario2.AutoSize = true;
-            this.estadoInventario2.Location = new System.Drawing.Point(239, 211);
-            this.estadoInventario2.Name = "estadoInventario2";
-            this.estadoInventario2.Size = new System.Drawing.Size(57, 13);
-            this.estadoInventario2.TabIndex = 30;
-            this.estadoInventario2.Text = "INACTIVO";
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 325);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 13);
+            this.label30.TabIndex = 50;
+            this.label30.Text = "Tipo Pago";
             // 
-            // label24
+            // TiempoVentaTipoPago
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(3, 115);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(106, 13);
-            this.label24.TabIndex = 31;
-            this.label24.Text = "Async Departamento";
-            // 
-            // statusDepartamento
-            // 
-            this.statusDepartamento.AutoSize = true;
-            this.statusDepartamento.Location = new System.Drawing.Point(115, 115);
-            this.statusDepartamento.Name = "statusDepartamento";
-            this.statusDepartamento.Size = new System.Drawing.Size(31, 13);
-            this.statusDepartamento.TabIndex = 32;
-            this.statusDepartamento.Text = "Valor";
-            // 
-            // estadoDepartamento
-            // 
-            this.estadoDepartamento.AutoSize = true;
-            this.estadoDepartamento.Location = new System.Drawing.Point(239, 115);
-            this.estadoDepartamento.Name = "estadoDepartamento";
-            this.estadoDepartamento.Size = new System.Drawing.Size(57, 13);
-            this.estadoDepartamento.TabIndex = 33;
-            this.estadoDepartamento.Text = "INACTIVO";
+            this.TiempoVentaTipoPago.AutoSize = true;
+            this.TiempoVentaTipoPago.Location = new System.Drawing.Point(105, 325);
+            this.TiempoVentaTipoPago.Name = "TiempoVentaTipoPago";
+            this.TiempoVentaTipoPago.Size = new System.Drawing.Size(31, 13);
+            this.TiempoVentaTipoPago.TabIndex = 60;
+            this.TiempoVentaTipoPago.Text = "Valor";
             // 
             // Form1
             // 
@@ -1332,6 +1450,18 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label statusDepartamento;
         private System.Windows.Forms.Label estadoDepartamento;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel statusTiempoDeReinicio;
+        private System.ComponentModel.BackgroundWorker bwUsuario2;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label statusUsuario2;
+        private System.Windows.Forms.Label estadoUsuario2;
+        public System.ComponentModel.BackgroundWorker bwVentaTipoPago;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label statusVentaTipoPago;
+        private System.Windows.Forms.Label estadoVentaTipoPago;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label TiempoVentaTipoPago;
     }
 }
 

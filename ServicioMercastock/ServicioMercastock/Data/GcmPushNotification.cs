@@ -18,7 +18,7 @@ namespace ServicioMercastock.Data
                     Method.POST);
                 rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                     Constantes.Http.TipoDeContenido.Json);
-                rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Venta.Externa.ObtenerIdVenta(), ParameterType.RequestBody);
+                //rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Venta.Externa.ObtenerIdVenta(), ParameterType.RequestBody);
                 rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                 {
                     if (response.StatusCode == HttpStatusCode.OK)

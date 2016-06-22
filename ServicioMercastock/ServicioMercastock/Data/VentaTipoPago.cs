@@ -1,12 +1,11 @@
-﻿
-using System;
+﻿using System;
 using System.Net;
 using RestSharp;
 using ServicioMercastock.Prop;
 
 namespace ServicioMercastock.Data
 {
-    class DetalleVenta
+    class VentaTipoPago
     {
         public class Local
         {
@@ -14,11 +13,11 @@ namespace ServicioMercastock.Data
             {
                 try
                 {
-                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.DetalleVenta.UrlExportar,
+                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.VentaTipoPago.UrlExportar,
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
-                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Venta.Externa.ObtenerIdVenta(Config.Externa.DetalleVenta.UrlMaximaIdVenta), ParameterType.RequestBody);
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Venta.Externa.ObtenerIdVenta(Config.Externa.VentaTipoPago.UrlMaximaIdVenta), ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         switch (response.StatusCode)
@@ -30,7 +29,7 @@ namespace ServicioMercastock.Data
                                 callback("CONTINUAR");
                                 break;
                             default:
-                                Opcion.Log(Config.Log.Interno.DetalleVenta, response.Content);
+                                Opcion.Log(Config.Log.Interno.VentaTipoPago, response.Content);
                                 callback("CONTINUAR");
                                 break;
                         }
@@ -39,7 +38,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.DetalleVenta, e.Message);
+                    Opcion.Log(Config.Log.Interno.VentaTipoPago, e.Message);
                 }
             }
         }
@@ -50,7 +49,7 @@ namespace ServicioMercastock.Data
             {
                 try
                 {
-                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.DetalleVenta.UrlImportar,
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.VentaTipoPago.UrlImportar,
      Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
@@ -63,14 +62,14 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log(Config.Log.Externo.DetalleVenta, response.Content);
+                            Opcion.Log(Config.Log.Externo.VentaTipoPago, response.Content);
                             callback("CONTINUAR");
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.DetalleVenta, e.Message);
+                    Opcion.Log(Config.Log.Externo.VentaTipoPago, e.Message);
                     callback("CONTINUAR");
                 }
             }
