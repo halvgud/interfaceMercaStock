@@ -33,13 +33,13 @@ namespace ServicioMercastock.Data
                             case HttpStatusCode.Accepted:
                                 break;
                             default:
-                                Opcion.Log(Config.Log.Interno.Categoria, response.Content);
+                                Opcion.Log(Config.Log.Interno.DashBoard, response.Content);
                                 break;
                         }
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Categoria, e.Message);
+                    Opcion.Log(Config.Log.Interno.DashBoard,  "EXCEPCION: "+ e.Message);
                 }
             }
         }

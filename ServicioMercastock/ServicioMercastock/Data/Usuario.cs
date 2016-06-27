@@ -46,7 +46,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                {
-                    Opcion.Log(Config.Log.Interno.Usuario, e.Message);
+                    Opcion.Log(Config.Log.Interno.Usuario,  "EXCEPCION: "+ e.Message);
                     callback("CONTINUAR");
                 }
            }
@@ -77,7 +77,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Usuario, e.Message);
+                    Opcion.Log(Config.Log.Externo.Usuario,  "EXCEPCION: "+ e.Message);
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Usuario, e.Message);
+                    Opcion.Log(Config.Log.Interno.Usuario,  "EXCEPCION: "+ e.Message);
                 }
             }
             public static void Exportar(Action<string> callback)
@@ -137,7 +137,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Usuario, e.Message);
+                    Opcion.Log(Config.Log.Externo.Usuario,  "EXCEPCION: "+ e.Message);
                     callback("CONTINUAR");
                 }
             }

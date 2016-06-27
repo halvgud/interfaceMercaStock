@@ -37,7 +37,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Departamento, e.Message);
+                    Opcion.Log(Config.Log.Interno.Departamento,  "EXCEPCION: "+ e.Message);
                     callback("CONTINUAR");
                 }
             }
@@ -70,7 +70,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Departamento,e.Message);
+                    Opcion.Log(Config.Log.Externo.Departamento, "EXCEPCION: "+ e.Message);
                 }
             }
         }

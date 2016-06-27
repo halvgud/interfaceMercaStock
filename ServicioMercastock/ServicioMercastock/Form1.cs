@@ -140,7 +140,7 @@ namespace ServicioMercastock
             }
             catch (Exception e)
             {
-                Opcion.Log("GENERIC_LOG.txt", e.Message);
+                Opcion.Log("GENERIC_LOG.txt",  "EXCEPCION: "+ e.Message);
             }
         }
 
@@ -168,7 +168,7 @@ namespace ServicioMercastock
         private void bwUsuario_DoWork(object sender, DoWorkEventArgs e)
         {
             var tiempo = Config.General.Tiempo.Usuario;
-//            TiempoUsuario.Tag = "USUARIO1";
+            TiempoUsuario.Tag = "USUARIO";
             MetodoGenerico(statusUsuario, TiempoUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar, ref tiempo, tiempo);
             
         }
@@ -346,17 +346,17 @@ namespace ServicioMercastock
            }
            catch (JsonException e)
            {
-               Console.WriteLine(e.Message);
+               Console.WriteLine( "EXCEPCION: "+ e.Message);
                return "";
            }
            catch (ArgumentOutOfRangeException e)
            {
-               Console.WriteLine(e.Message);
+               Console.WriteLine( "EXCEPCION: "+ e.Message);
                return "";
            }
            catch (FormatException e)
            {
-               Console.WriteLine(e.Message);
+               Console.WriteLine( "EXCEPCION: "+ e.Message);
                return "";
            }
        }

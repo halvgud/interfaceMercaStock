@@ -38,7 +38,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.VentaTipoPago, e.Message);
+                    Opcion.Log(Config.Log.Interno.VentaTipoPago,  "EXCEPCION: "+ e.Message);
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.VentaTipoPago, e.Message);
+                    Opcion.Log(Config.Log.Externo.VentaTipoPago,  "EXCEPCION: "+ e.Message);
                     callback("CONTINUAR");
                 }
             }

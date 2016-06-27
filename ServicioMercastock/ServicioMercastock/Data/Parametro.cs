@@ -33,7 +33,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Parametro, e.Message);
+                    Opcion.Log(Config.Log.Interno.Parametro,  "EXCEPCION: "+ e.Message);
                     callback("CONTINUAR");
                     throw;
                 }
@@ -75,8 +75,8 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.Message);
-                    Opcion.Log(Config.Log.Externo.Parametro, e.Message);
+                    MessageBox.Show( "EXCEPCION: "+ e.Message);
+                    Opcion.Log(Config.Log.Externo.Parametro,  "EXCEPCION: "+ e.Message);
                 }
             }
         }

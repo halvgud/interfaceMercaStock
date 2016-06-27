@@ -18,6 +18,7 @@ namespace ServicioMercastock.Prop
                 public static string Usuario { get; set; }
                 public static string Venta { get; set; }
                 public static string VentaTipoPago { get; set; }
+                public static string DashBoard { get; set; }
             }
 
            public class Externo

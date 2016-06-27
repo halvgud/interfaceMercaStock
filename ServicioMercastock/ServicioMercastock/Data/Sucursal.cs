@@ -37,7 +37,7 @@ namespace ServicioMercastock.Data
             }
             catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Sucursal,e.Message);
+                    Opcion.Log(Config.Log.Interno.Sucursal, "EXCEPCION: "+ e.Message);
                 }
             return false;
         }

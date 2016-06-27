@@ -34,7 +34,7 @@ namespace ServicioMercastock.Data
             }
             catch (Exception e)
             {
-                Opcion.Log(Config.Log.Interno.Gcm, e.Message);
+                Opcion.Log(Config.Log.Interno.Gcm,  "EXCEPCION: "+ e.Message);
             }
         }
         public static void EnviarNotificacion(string categorias,string deviceRegIds,Action<string> callback)

@@ -41,7 +41,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Inventario1, e.Message);
+                    Opcion.Log(Config.Log.Interno.Inventario1,  "EXCEPCION: "+ e.Message);
                 }
             }
             public static void Exportar(Action<string> callback)
@@ -73,7 +73,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Inventario1, e.Message);
+                    Opcion.Log(Config.Log.Interno.Inventario1,  "EXCEPCION: "+ e.Message);
                 }
             }
             public static void Actualizar(string json,Action<string> callback)
@@ -101,7 +101,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2,  "EXCEPCION: "+ e.Message);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2,  "EXCEPCION: "+ e.Message);
                 }
             }
             public static void Exportar(Action<string> callback)
@@ -167,7 +167,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2,  "EXCEPCION: "+ e.Message);
                 }
             }
 
@@ -196,7 +196,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Inventario2, e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2,  "EXCEPCION: "+ e.Message);
                 }
             }
         }
