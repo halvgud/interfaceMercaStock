@@ -26,7 +26,8 @@ namespace ServicioMercastock.Data
                         JObject.Parse(respuesta.Content).Property("idSucursal").Value.ToString();
                     Config.Externa.Sucursal.Nombre =
                         JObject.Parse(respuesta.Content).Property("nombre").Value.ToString();
-
+                    Config.Externa.Sucursal.Nombre =
+                        JObject.Parse(respuesta.Content).Property("host").Value.ToString();
 
                 }
                 else

@@ -129,7 +129,7 @@ namespace ServicioMercastock
                     }
                     else
                     {
-                        delegateTiempo += 1;
+                       // delegateTiempo += 1;
                         BeginInvoke((MethodInvoker)(() => status.Text = @"1.- Reiniciando Petición"));
                         _ejecucionEnProgreso = false;
                         TiempoDeEspera(estadoTiempo,ref delegateTiempo);
@@ -260,7 +260,7 @@ namespace ServicioMercastock
         {
 
                 var tiempo = Config.General.Tiempo.Inventario2;
-            TiempoInventario1.Tag = "INVENTARIO2";
+            TiempoInventario2.Tag = "INVENTARIO2";
             MetodoGenerico(statusInventario2,TiempoInventario2, Inventario.Local.Exportar, Inventario.Externa.Importar,ref tiempo,tiempo);
    
         }

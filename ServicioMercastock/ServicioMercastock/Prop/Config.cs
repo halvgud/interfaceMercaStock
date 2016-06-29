@@ -1,4 +1,6 @@
 ﻿
+using Newtonsoft.Json;
+
 namespace ServicioMercastock.Prop
 {
    public class Config
@@ -192,6 +194,7 @@ namespace ServicioMercastock.Prop
                 public static string Password { get; set; }
                 public static string ClaveApi { get; set; }
                 public static string Nombre { get; set; }
+                public static string Host { get; set; }
            } 
            public class DetalleVenta
            {

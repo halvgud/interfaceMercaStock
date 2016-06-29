@@ -52,7 +52,8 @@ namespace ServicioMercastock.Data
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
-                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
+
+                    //rest1.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         switch (response.StatusCode)
@@ -64,8 +65,7 @@ namespace ServicioMercastock.Data
                                 callback("CONTINUAR");
                                 break;
                             default:
-                                
-                                Opcion.Log(Config.Log.Interno.Inventario1, response.Content);
+                                Opcion.Log(Config.Log.Interno.Inventario1, response.Content+"::"+response.Content);
                                 callback("CONTINUAR");
                                 break;
                         }
