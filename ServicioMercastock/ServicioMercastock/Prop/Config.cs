@@ -189,7 +189,8 @@ namespace ServicioMercastock.Prop
            public class Sucursal
            {
                 public static string UrlAutenticar { get; set; }
-               public static string IdSucursal { get; set; }
+                public static string UrlDb { get; set; }
+                public static string IdSucursal { get; set; }
                 public static string User { get; set; }
                 public static string Password { get; set; }
                 public static string ClaveApi { get; set; }

@@ -68,6 +68,7 @@ namespace ServicioMercastock.Data
             data.Add("idSucursal",Config.Externa.Sucursal.IdSucursal);
             data.Add("descripcionSucursal",Config.Externa.Sucursal.Nombre);
             data.Add("host", Config.Externa.Sucursal.Host);
+            data.Add("url",Config.Externa.Sucursal.UrlDb);
             data.Add(Constantes.Gcm.Parametro.Time, DateTime.Now);
             postdata.Add(Constantes.Gcm.Parametro.Data, data);
             postdata.Add(Constantes.Gcm.Parametro.RegistrationIds,arreglo);
