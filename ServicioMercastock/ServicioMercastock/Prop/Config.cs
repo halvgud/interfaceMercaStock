@@ -35,6 +35,7 @@ namespace ServicioMercastock.Prop
                 public static string Usuario { get; set; }
                 public static string Venta { get; set; }
                 public static string VentaTipoPago { get; set; }
+                public static string VentaCancelacion { get; set; }
             }
        }
        public class General
@@ -53,6 +54,7 @@ namespace ServicioMercastock.Prop
                 public static int Inventario1 { get; set; }
                 public static int Inventario2 { get; set; }
                 public static int VentaTipoPago { get; set; }
+                public static int VentaCancelacion { get; set; }
            }
 
            public class Activacion
@@ -68,6 +70,7 @@ namespace ServicioMercastock.Prop
                 public static bool Inventario1 { get; set; }
                 public static bool Inventario2 { get; set; }
                 public static bool VentaTipoPago { get; set; }
+                public static bool VentaCancelacion { get; set; }
             }
 
            public class Gcm
@@ -135,6 +138,7 @@ namespace ServicioMercastock.Prop
             public class Venta
             {
                 public static string UrlExportar { get; set; }
+                public static string UrlExportarCancelacion { get; set; }
             }
 
             public class Inventario
@@ -206,6 +210,7 @@ namespace ServicioMercastock.Prop
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlMaximaIdVenta { get; set; }
+                public static string UrlImportarCancelacion { get; set; }
             }
             public class Inventario
             {

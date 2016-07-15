@@ -73,6 +73,40 @@ namespace ServicioMercastock.Data
                     callback("CONTINUAR");
                 }
             }
+
+            public static void ImportarCancelacion(string json, Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.Venta.UrlImportarCancelacion,
+                        Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
+                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Opcion.LimpiarJson(json),
+                        ParameterType.RequestBody);
+                    rest.Cliente.ExecuteAsync(rest.Peticion, response =>
+                    {
+                        switch (response.StatusCode)
+                        {
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Externo.VentaCancelacion, response.Content);
+                                callback("CONTINUAR");
+                                break;
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Externo.VentaCancelacion, "EXCEPCION: " + e.Message);
+                    callback("CONTINUAR");
+                }
+            }
         }
     }
 }

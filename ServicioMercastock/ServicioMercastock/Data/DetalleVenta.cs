@@ -30,7 +30,7 @@ namespace ServicioMercastock.Data
                                 callback("CONTINUAR");
                                 break;
                             default:
-                                Opcion.Log(Config.Log.Interno.DetalleVenta, response.Content);
+                                Opcion.Log(Config.Log.Interno.DetalleVenta, response.Content + response.StatusCode);
                                 callback("CONTINUAR");
                                 break;
                         }

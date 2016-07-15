@@ -43,6 +43,36 @@ namespace ServicioMercastock.Data
                     Opcion.Log(Config.Log.Interno.Venta,  "EXCEPCION: "+ e.Message);
                 }
             }
+
+            public static void ExportarListaCancelacion(Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.Venta.UrlExportarCancelacion,
+                        Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
+                    rest.Cliente.ExecuteAsync(rest.Peticion, response =>
+                    {
+                        switch (response.StatusCode)
+                        {
+                            case HttpStatusCode.OK:
+                                callback(response.Content);
+                                break;
+                            case HttpStatusCode.Accepted:
+                                callback("CONTINUAR");
+                                break;
+                            default:
+                                Opcion.Log(Config.Log.Interno.Venta, response.Content);
+                                callback("CONTINUAR");
+                                break;
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Interno.Venta,"EXCEPCION: "+e.Message);
+                }
+            }
         }
 
         public class Externa
@@ -81,7 +111,7 @@ namespace ServicioMercastock.Data
                         }
                         else
                         {
-                            Opcion.Log(Config.Log.Externo.Venta, response.Content);
+                            Opcion.Log(Config.Log.Externo.Venta, response.Content+response.StatusCode);
                             callback("CONTINUAR");
                         }
                     });

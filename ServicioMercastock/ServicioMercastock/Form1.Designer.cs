@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label29 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.statusUsuario = new System.Windows.Forms.Label();
@@ -64,10 +64,17 @@
             this.label49 = new System.Windows.Forms.Label();
             this.statusInventario2 = new System.Windows.Forms.Label();
             this.estadoInventario2 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.statusVentaTipoPago = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.statusCancelacion = new System.Windows.Forms.Label();
             this.estadoVentaTipoPago = new System.Windows.Forms.Label();
+            this.estadoCancelacion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.TiempoCancelacion = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -121,14 +128,18 @@
             this.TiempoUsuario = new System.Windows.Forms.Label();
             this.TiempoDepartamento = new System.Windows.Forms.Label();
             this.TiempoVenta = new System.Windows.Forms.Label();
-            this.TiempoInventario1 = new System.Windows.Forms.Label();
             this.TiempoArticulo = new System.Windows.Forms.Label();
             this.TiempoCategoria = new System.Windows.Forms.Label();
             this.TiempoParametro = new System.Windows.Forms.Label();
             this.TiempoDetalleVenta = new System.Windows.Forms.Label();
             this.TiempoInventario2 = new System.Windows.Forms.Label();
+            this.TiempoVentaTipoPago = new System.Windows.Forms.Label();
+            this.TiempoInventario1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.detenerMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LmemoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
             this.memoriaRAM = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -145,8 +156,7 @@
             this.bwFormulario = new System.ComponentModel.BackgroundWorker();
             this.bwUsuario2 = new System.ComponentModel.BackgroundWorker();
             this.bwVentaTipoPago = new System.ComponentModel.BackgroundWorker();
-            this.label30 = new System.Windows.Forms.Label();
-            this.TiempoVentaTipoPago = new System.Windows.Forms.Label();
+            this.bwVentaCancelacion = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -163,7 +173,7 @@
             this.tableLayoutPanel1.Controls.Add(this.groupBox2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 22);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -174,6 +184,7 @@
             // 
             this.groupBox2.Controls.Add(this.tableLayoutPanel3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox2.Location = new System.Drawing.Point(407, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(399, 399);
@@ -188,7 +199,6 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.55216F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 24.68193F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.01272F));
-            this.tableLayoutPanel3.Controls.Add(this.label29, 0, 11);
             this.tableLayoutPanel3.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label10, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.statusUsuario, 1, 2);
@@ -221,12 +231,16 @@
             this.tableLayoutPanel3.Controls.Add(this.label49, 0, 10);
             this.tableLayoutPanel3.Controls.Add(this.statusInventario2, 1, 10);
             this.tableLayoutPanel3.Controls.Add(this.estadoInventario2, 2, 10);
+            this.tableLayoutPanel3.Controls.Add(this.label29, 0, 11);
             this.tableLayoutPanel3.Controls.Add(this.statusVentaTipoPago, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.label48, 0, 12);
+            this.tableLayoutPanel3.Controls.Add(this.statusCancelacion, 1, 12);
             this.tableLayoutPanel3.Controls.Add(this.estadoVentaTipoPago, 2, 11);
+            this.tableLayoutPanel3.Controls.Add(this.estadoCancelacion, 2, 12);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 12;
+            this.tableLayoutPanel3.RowCount = 13;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
@@ -238,18 +252,10 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(393, 380);
             this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(3, 231);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(88, 13);
-            this.label29.TabIndex = 37;
-            this.label29.Text = "Async Tipo Pago";
             // 
             // label7
             // 
@@ -539,6 +545,15 @@
             this.estadoInventario2.TabIndex = 30;
             this.estadoInventario2.Text = "INACTIVO";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(3, 231);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(88, 13);
+            this.label29.TabIndex = 37;
+            this.label29.Text = "Async Tipo Pago";
+            // 
             // statusVentaTipoPago
             // 
             this.statusVentaTipoPago.AutoSize = true;
@@ -547,6 +562,24 @@
             this.statusVentaTipoPago.Size = new System.Drawing.Size(31, 13);
             this.statusVentaTipoPago.TabIndex = 38;
             this.statusVentaTipoPago.Text = "Valor";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(3, 251);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(98, 13);
+            this.label48.TabIndex = 42;
+            this.label48.Text = "Async Cancelacion";
+            // 
+            // statusCancelacion
+            // 
+            this.statusCancelacion.AutoSize = true;
+            this.statusCancelacion.Location = new System.Drawing.Point(115, 251);
+            this.statusCancelacion.Name = "statusCancelacion";
+            this.statusCancelacion.Size = new System.Drawing.Size(31, 13);
+            this.statusCancelacion.TabIndex = 41;
+            this.statusCancelacion.Text = "Valor";
             // 
             // estadoVentaTipoPago
             // 
@@ -557,10 +590,20 @@
             this.estadoVentaTipoPago.TabIndex = 39;
             this.estadoVentaTipoPago.Text = "INACTIVO";
             // 
+            // estadoCancelacion
+            // 
+            this.estadoCancelacion.AutoSize = true;
+            this.estadoCancelacion.Location = new System.Drawing.Point(239, 251);
+            this.estadoCancelacion.Name = "estadoCancelacion";
+            this.estadoCancelacion.Size = new System.Drawing.Size(57, 13);
+            this.estadoCancelacion.TabIndex = 40;
+            this.estadoCancelacion.Text = "INACTIVO";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(398, 399);
@@ -575,6 +618,8 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.8342F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel2.Controls.Add(this.TiempoCancelacion, 3, 17);
+            this.tableLayoutPanel2.Controls.Add(this.label31, 2, 17);
             this.tableLayoutPanel2.Controls.Add(this.label30, 0, 17);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
@@ -663,6 +708,33 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 380);
             this.tableLayoutPanel2.TabIndex = 3;
+            // 
+            // TiempoCancelacion
+            // 
+            this.TiempoCancelacion.AutoSize = true;
+            this.TiempoCancelacion.Location = new System.Drawing.Point(295, 325);
+            this.TiempoCancelacion.Name = "TiempoCancelacion";
+            this.TiempoCancelacion.Size = new System.Drawing.Size(31, 13);
+            this.TiempoCancelacion.TabIndex = 60;
+            this.TiempoCancelacion.Text = "Valor";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(198, 325);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(66, 13);
+            this.label31.TabIndex = 60;
+            this.label31.Text = "Cancelacion";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(3, 325);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(56, 13);
+            this.label30.TabIndex = 50;
+            this.label30.Text = "Tipo Pago";
             // 
             // label3
             // 
@@ -1141,15 +1213,6 @@
             this.TiempoVenta.TabIndex = 53;
             this.TiempoVenta.Text = "Valor";
             // 
-            // TiempoInventario1
-            // 
-            this.TiempoInventario1.AutoSize = true;
-            this.TiempoInventario1.Location = new System.Drawing.Point(105, 305);
-            this.TiempoInventario1.Name = "TiempoInventario1";
-            this.TiempoInventario1.Size = new System.Drawing.Size(31, 13);
-            this.TiempoInventario1.TabIndex = 54;
-            this.TiempoInventario1.Text = "Valor";
-            // 
             // TiempoArticulo
             // 
             this.TiempoArticulo.AutoSize = true;
@@ -1195,46 +1258,98 @@
             this.TiempoInventario2.TabIndex = 59;
             this.TiempoInventario2.Text = "Valor";
             // 
+            // TiempoVentaTipoPago
+            // 
+            this.TiempoVentaTipoPago.AutoSize = true;
+            this.TiempoVentaTipoPago.Location = new System.Drawing.Point(105, 325);
+            this.TiempoVentaTipoPago.Name = "TiempoVentaTipoPago";
+            this.TiempoVentaTipoPago.Size = new System.Drawing.Size(31, 13);
+            this.TiempoVentaTipoPago.TabIndex = 60;
+            this.TiempoVentaTipoPago.Text = "Valor";
+            // 
+            // TiempoInventario1
+            // 
+            this.TiempoInventario1.AutoSize = true;
+            this.TiempoInventario1.Location = new System.Drawing.Point(105, 305);
+            this.TiempoInventario1.Name = "TiempoInventario1";
+            this.TiempoInventario1.Size = new System.Drawing.Size(31, 13);
+            this.TiempoInventario1.TabIndex = 54;
+            this.TiempoInventario1.Text = "Valor";
+            // 
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.WorkerSupportsCancellation = true;
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // statusStrip1
             // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Top;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripDropDownButton1,
             this.LmemoriaRAM,
             this.memoriaRAM,
             this.toolStripStatusLabel1,
             this.statusTiempoDeReinicio});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 405);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(809, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detenerMenuItem,
+            this.salirMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(96, 20);
+            this.toolStripDropDownButton1.Text = "Configuracion";
+            this.toolStripDropDownButton1.ToolTipText = "Configuración";
+            this.toolStripDropDownButton1.Visible = false;
+            // 
+            // detenerMenuItem
+            // 
+            this.detenerMenuItem.Name = "detenerMenuItem";
+            this.detenerMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.detenerMenuItem.Text = "Detener";
+            this.detenerMenuItem.Click += new System.EventHandler(this.detenerMenuItem_Click);
+            // 
+            // salirMenuItem
+            // 
+            this.salirMenuItem.Name = "salirMenuItem";
+            this.salirMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirMenuItem.Text = "Salir";
+            // 
             // LmemoriaRAM
             // 
+            this.LmemoriaRAM.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.LmemoriaRAM.Name = "LmemoriaRAM";
             this.LmemoriaRAM.Size = new System.Drawing.Size(87, 17);
             this.LmemoriaRAM.Text = "Memoria RAM:";
             // 
             // memoriaRAM
             // 
+            this.memoriaRAM.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.memoriaRAM.Name = "memoriaRAM";
             this.memoriaRAM.Size = new System.Drawing.Size(12, 17);
             this.memoriaRAM.Text = "-";
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(162, 17);
             this.toolStripStatusLabel1.Text = "Tiempo de Espera de Reinicio";
             // 
             // statusTiempoDeReinicio
             // 
+            this.statusTiempoDeReinicio.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.statusTiempoDeReinicio.Name = "statusTiempoDeReinicio";
             this.statusTiempoDeReinicio.Size = new System.Drawing.Size(12, 17);
             this.statusTiempoDeReinicio.Text = "-";
@@ -1287,6 +1402,7 @@
             // bwFormulario
             // 
             this.bwFormulario.WorkerReportsProgress = true;
+            this.bwFormulario.WorkerSupportsCancellation = true;
             this.bwFormulario.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwFormulario_DoWork);
             // 
             // bwUsuario2
@@ -1299,28 +1415,16 @@
             this.bwVentaTipoPago.WorkerReportsProgress = true;
             this.bwVentaTipoPago.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVentaTipoPago_DoWork);
             // 
-            // label30
+            // bwVentaCancelacion
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(3, 325);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(56, 13);
-            this.label30.TabIndex = 50;
-            this.label30.Text = "Tipo Pago";
-            // 
-            // TiempoVentaTipoPago
-            // 
-            this.TiempoVentaTipoPago.AutoSize = true;
-            this.TiempoVentaTipoPago.Location = new System.Drawing.Point(105, 325);
-            this.TiempoVentaTipoPago.Name = "TiempoVentaTipoPago";
-            this.TiempoVentaTipoPago.Size = new System.Drawing.Size(31, 13);
-            this.TiempoVentaTipoPago.TabIndex = 60;
-            this.TiempoVentaTipoPago.Text = "Valor";
+            this.bwVentaCancelacion.WorkerReportsProgress = true;
+            this.bwVentaCancelacion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVentaCancelacion_DoWork);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(809, 427);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
@@ -1462,6 +1566,15 @@
         private System.Windows.Forms.Label estadoVentaTipoPago;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label TiempoVentaTipoPago;
+        public System.ComponentModel.BackgroundWorker bwVentaCancelacion;
+        private System.Windows.Forms.Label TiempoCancelacion;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label statusCancelacion;
+        private System.Windows.Forms.Label estadoCancelacion;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
+        private System.Windows.Forms.ToolStripMenuItem detenerMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirMenuItem;
     }
 }
 

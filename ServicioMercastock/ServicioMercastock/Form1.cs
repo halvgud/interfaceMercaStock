@@ -19,6 +19,7 @@ namespace ServicioMercastock
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            //_flagFinalizarEjecucion = true;
             CheckForIllegalCrossThreadCalls = false;
             ApiUrlLocal.Text = Config.Local.Api.UrlApi;
             ApiUrlWeb.Text = Config.Externa.Api.UrlApi;
@@ -33,6 +34,7 @@ namespace ServicioMercastock
             TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
             TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
             TiempoVentaTipoPago.Text = Config.General.Tiempo.VentaTipoPago.ToString();
+            TiempoCancelacion.Text = Config.General.Tiempo.VentaCancelacion.ToString();
             InicializarTareasAsyncronas();
             MostrarConfiguracionesLocales();
             MostrarConfiguracionesExternas();
@@ -49,8 +51,6 @@ namespace ServicioMercastock
             LocalUrlVenta.Text = Config.Local.Venta.UrlExportar;
             LocalUrlInventario.Text = Config.Local.Inventario.UrlImportar;
             LocalUrlInventario2.Text = Config.Local.Inventario.UrlExportar;
-            
-
         }
         private void MostrarConfiguracionesExternas()
         {
@@ -65,7 +65,7 @@ namespace ServicioMercastock
             
             ExternoUrlInventario.Text = Config.Externa.Inventario.UrlImportar;
             ExternoUrlInventario2.Text = Config.Externa.Inventario.UrlExportar;
-
+            
 
         }
 
@@ -74,6 +74,7 @@ namespace ServicioMercastock
             if (Sucursal.Autenticar())
             {
                 Console.WriteLine(@"Autenticado");
+                if(!backgroundWorker1.IsBusy)
                 backgroundWorker1.RunWorkerAsync();
                 InicializarEstado(estadoUsuario, bwUsuario, Config.General.Activacion.Usuario);
                 InicializarEstado(estadoUsuario2,bwUsuario2,Config.General.Activacion.Usuario2);
@@ -86,6 +87,8 @@ namespace ServicioMercastock
                 InicializarEstado(estadoInventario1, bwInventario1, Config.General.Activacion.Inventario1);
                 InicializarEstado(estadoInventario2, bwInventario2, Config.General.Activacion.Inventario2);
                 InicializarEstado(estadoVentaTipoPago,bwVentaTipoPago,Config.General.Activacion.VentaTipoPago);
+                InicializarEstado(estadoCancelacion,bwVentaCancelacion,Config.General.Activacion.VentaCancelacion);
+                if(!bwFormulario.IsBusy)
                 bwFormulario.RunWorkerAsync();
 
             }
@@ -107,7 +110,13 @@ namespace ServicioMercastock
         private void MetodoGenerico(Label status,Label estadoTiempo, Action<Action<string>> exportar, Action<string, Action<string>> importar,ref int tiempo,int tiempo2)
         {
             var delegateTiempo = tiempo;
-            if (_flagFinalizarEjecucion) return;
+            if (_flagFinalizarEjecucion)
+            {
+                BeginInvoke((MethodInvoker)(() => status.Text = status.Text = @"Finalizando..."));
+                var bw = (BackgroundWorker) status.Tag;
+                bw.CancelAsync();
+                return;
+            }
             try
             {
                 _ejecucionEnProgreso = true;
@@ -169,6 +178,7 @@ namespace ServicioMercastock
         {
             var tiempo = Config.General.Tiempo.Usuario;
             TiempoUsuario.Tag = "USUARIO";
+            statusUsuario.Tag = bwUsuario;
             MetodoGenerico(statusUsuario, TiempoUsuario, Usuario.Externa.Exportar, Usuario.Local.Importar, ref tiempo, tiempo);
             
         }
@@ -180,6 +190,10 @@ namespace ServicioMercastock
                 backgroundWorker1.ReportProgress(0);
                 Thread.Sleep(1000 * Config.General.Tiempo.Pantalla);
             }
+            if (backgroundWorker1.CancellationPending)
+            {
+                e.Cancel = true;
+            }
         }
 
 
@@ -189,6 +203,7 @@ namespace ServicioMercastock
 
             var tiempo = Config.General.Tiempo.Parametro;
             TiempoParametro.Tag = "PARAMETRO";
+            statusParametro.Tag = bwParametro;
             MetodoGenerico(statusParametro,TiempoParametro, Parametro.Externa.Exportar, Parametro.Local.Importar, ref tiempo,tiempo);
         }
 
@@ -197,6 +212,7 @@ namespace ServicioMercastock
 
                 var tiempo = Config.General.Tiempo.Articulo;
             TiempoArticulo.Tag = "ARTICULO";
+            statusArticulo.Tag = bwArticulo;
             MetodoGenerico(statusArticulo,TiempoArticulo, Articulo.Local.Exportar, Articulo.Externa.Importar, ref tiempo,tiempo);
 
         }
@@ -205,6 +221,7 @@ namespace ServicioMercastock
         {
                 var tiempo = Config.General.Tiempo.Categoria;
             TiempoCategoria.Tag = "CATEGORIA";
+            statusCategoria.Tag = bwCategoria;
             MetodoGenerico(statusCategoria,TiempoCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, ref tiempo,tiempo);
 
         }
@@ -214,6 +231,7 @@ namespace ServicioMercastock
 
                 var tiempo = Config.General.Tiempo.Departamento;
             TiempoDepartamento.Tag = "DEPARTAMENTO";
+            statusDepartamento.Tag = bwDepartamento;
             MetodoGenerico(statusDepartamento,TiempoDepartamento, Departamento.Local.Exportar, Departamento.Externa.Importar,ref tiempo,tiempo);
 
         }
@@ -234,6 +252,7 @@ namespace ServicioMercastock
         {
             var tiempo = Config.General.Tiempo.Venta;
             TiempoVenta.Tag = "VENTA";
+            statusVenta.Tag = bwVenta;
             MetodoGenerico(statusVenta,TiempoVenta, Venta.Local.Exportar, Venta.Externa.Importar, ref tiempo,tiempo);
 
         }
@@ -243,6 +262,7 @@ namespace ServicioMercastock
 
                 var tiempo = Config.General.Tiempo.DetalleVenta;
             TiempoDetalleVenta.Tag = "DETALLEVENTA";
+            statusDetalleVenta.Tag = bwDetalleVenta;
             MetodoGenerico(statusDetalleVenta,TiempoDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, ref tiempo,tiempo);
 
         }
@@ -252,6 +272,7 @@ namespace ServicioMercastock
 
                 var tiempo = Config.General.Tiempo.Inventario1;
             TiempoInventario1.Tag = "INVENTARIO1";
+            statusInventario.Tag = bwInventario1;
             MetodoGenerico(statusInventario,TiempoInventario1, Inventario.Externa.Exportar, Inventario.Local.Importar,ref tiempo,tiempo);
 
         }
@@ -261,6 +282,7 @@ namespace ServicioMercastock
 
                 var tiempo = Config.General.Tiempo.Inventario2;
             TiempoInventario2.Tag = "INVENTARIO2";
+            statusInventario2.Tag = bwInventario2;
             MetodoGenerico(statusInventario2,TiempoInventario2, Inventario.Local.Exportar, Inventario.Externa.Importar,ref tiempo,tiempo);
    
         }
@@ -295,7 +317,8 @@ namespace ServicioMercastock
         private void bwUsuario2_DoWork(object sender, DoWorkEventArgs e)
         {
             var tiempo = Config.General.Tiempo.Usuario2;
-            TiempoUsuario.Tag = "USUARIO1";
+            TiempoUsuario.Tag = "USUARIO2";
+            statusUsuario.Tag = bwUsuario2;
             MetodoGenerico(statusUsuario2, TiempoUsuario, Usuario.Local.Exportar, Usuario.Externa.Importar, ref tiempo, tiempo);
         }
 
@@ -303,62 +326,54 @@ namespace ServicioMercastock
         {
             var tiempo = Config.General.Tiempo.VentaTipoPago;
             TiempoVentaTipoPago.Tag = "VENTA TIPO PAGO";
+            statusVentaTipoPago.Tag = bwVentaTipoPago;
             MetodoGenerico(statusVentaTipoPago, TiempoVentaTipoPago, VentaTipoPago.Local.Exportar, VentaTipoPago.Externa.Importar, ref tiempo, tiempo);
+        }
+
+        private void bwVentaCancelacion_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.VentaCancelacion;
+            TiempoCancelacion.Tag = "VENTA CANCELACION";
+            statusCancelacion.Tag = bwVentaCancelacion;
+            MetodoGenerico(statusCancelacion, TiempoCancelacion, Venta.Local.ExportarListaCancelacion, VentaTipoPago.Externa.ImportarCancelacion, ref tiempo, tiempo);
+
+        }
+
+        private bool _banderaDetener;
+        private void detenerMenuItem_Click(object sender, EventArgs e)
+        {
+            detenerMenuItem.Enabled = false;
+            if (!_banderaDetener)
+            {
+                while (true)
+                {
+                    _flagFinalizarEjecucion = true;
+                    if (!_ejecucionEnProgreso)
+                    {
+                        detenerMenuItem.Text = @"Iniciar";
+                        detenerMenuItem.Enabled = true;
+                        _banderaDetener = true;
+                    }
+                    else
+                    {
+                        detenerMenuItem.Enabled = false;
+                        detenerMenuItem.Text = @"Deteniendo...";
+                        Thread.Sleep(1000*60);
+                        continue;
+                    }
+                    break;
+                }
+            }
+            else
+            {
+                detenerMenuItem.Enabled = false;
+                Form1_Load(sender, e);
+                detenerMenuItem.Enabled = true;
+                _banderaDetener = false;
+            }
         }
     }
 
 }
-/*
-       private static string GetJsonDiff(string existing, string modified)
-       {
-           try
-           {
-               var webJson = JObject.Parse(modified).Property("data").Value;
 
-               var data1 = JObject.Parse(existing.Substring(existing.IndexOf('{'),
-                       existing.LastIndexOf('}') + 1 - existing.IndexOf('{'))).Property("data").Value;
-
-               DataTable tablaLocal = (DataTable)JsonConvert.DeserializeObject(data1.ToString(), (typeof(DataTable)));
-               DataTable tablaExterna =
-                   (DataTable) JsonConvert.DeserializeObject(webJson.ToString(), typeof (DataTable));
-               var matched =
-              tablaLocal.AsEnumerable() //se numeraliza el datatable para heredar ciertas propiedades
-                  .Join(tablaExterna.AsEnumerable(), table1 => table1.Field<string>("usuario"), //se hace join con la otra tabla para el campo id empleado
-                      table2 => table2.Field<string>("usuario"),
-                      (table1, table2) => new { table1, table2 }) //para cada tabla se crea una nueva tabla
-                  .Where( // donde
-                      @t => //para cada valor perteneciente a la expresion lambda se comparan campos estrategicos de la tabla 1 y tabla 2
-                          @t.table1.Field<string>("nombre").Trim() == @t.table2.Field<string>("nombre") &&
-                          @t.table1.Field<string>("apellido").Trim() == @t.table2.Field<string>("apellido") &&
-                          //@t.table1.Field<string>("contrasena").Trim() == @t.table2.Field<string>("password") &&
-                          @t.table1.Field<string>("idEstado").Trim() == @t.table2.Field<string>("idEstado") &&
-                          @t.table1.Field<string>("idNivelAutorizacion").Trim() == @t.table2.Field<string>("idNivelAutorizacion"))
-                  .Select(@t => @t.table1);//para al final seleccionar el resultado
-                                           //otra expresion linq para sacar las diferencias que no estan en la tabla del dbf
-               var missing = from table1 in tablaLocal.AsEnumerable()
-                             where !matched.Contains(table1)
-                             select table1;
-               var dt1 = missing.CopyToDataTable();
-               var diferencia = JsonConvert.SerializeObject(dt1);
-
-               return diferencia;
-               //  return JsonConvert.SerializeObject(auditLog);
-           }
-           catch (JsonException e)
-           {
-               Console.WriteLine( "EXCEPCION: "+ e.Message);
-               return "";
-           }
-           catch (ArgumentOutOfRangeException e)
-           {
-               Console.WriteLine( "EXCEPCION: "+ e.Message);
-               return "";
-           }
-           catch (FormatException e)
-           {
-               Console.WriteLine( "EXCEPCION: "+ e.Message);
-               return "";
-           }
-       }
-       */
 
