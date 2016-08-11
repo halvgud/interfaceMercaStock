@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Ajuste.cs" />
     <Compile Include="Data\DashBoard.cs" />
     <Compile Include="Data\GcmPushNotification.cs" />
     <Compile Include="Data\Articulo.cs" />

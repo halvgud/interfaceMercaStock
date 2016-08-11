@@ -20,26 +20,28 @@ namespace ServicioMercastock
         private void Form1_Load(object sender, EventArgs e)
         {
             //_flagFinalizarEjecucion = true;
-            CheckForIllegalCrossThreadCalls = false;
-            ApiUrlLocal.Text = Config.Local.Api.UrlApi;
-            ApiUrlWeb.Text = Config.Externa.Api.UrlApi;
-            TiempoPantalla.Text = Config.General.Tiempo.Pantalla.ToString();
-            TiempoArticulo.Text = Config.General.Tiempo.Articulo.ToString();
-            TiempoCategoria.Text = Config.General.Tiempo.Categoria.ToString();
-            TiempoDepartamento.Text = Config.General.Tiempo.Departamento.ToString();
-            TiempoUsuario.Text = Config.General.Tiempo.Usuario.ToString();
-            TiempoParametro.Text = Config.General.Tiempo.Parametro.ToString();
-            TiempoDetalleVenta.Text = Config.General.Tiempo.DetalleVenta.ToString();
-            TiempoVenta.Text = Config.General.Tiempo.Venta.ToString();
-            TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
-            TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
-            TiempoVentaTipoPago.Text = Config.General.Tiempo.VentaTipoPago.ToString();
-            TiempoCancelacion.Text = Config.General.Tiempo.VentaCancelacion.ToString();
-            InicializarTareasAsyncronas();
-            MostrarConfiguracionesLocales();
-            MostrarConfiguracionesExternas();
+              CheckForIllegalCrossThreadCalls = false;
+              ApiUrlLocal.Text = Config.Local.Api.UrlApi;
+              ApiUrlWeb.Text = Config.Externa.Api.UrlApi;
+              TiempoPantalla.Text = Config.General.Tiempo.Pantalla.ToString();
+              TiempoArticulo.Text = Config.General.Tiempo.Articulo.ToString();
+              TiempoCategoria.Text = Config.General.Tiempo.Categoria.ToString();
+              TiempoDepartamento.Text = Config.General.Tiempo.Departamento.ToString();
+              TiempoUsuario.Text = Config.General.Tiempo.Usuario.ToString();
+              TiempoParametro.Text = Config.General.Tiempo.Parametro.ToString();
+              TiempoDetalleVenta.Text = Config.General.Tiempo.DetalleVenta.ToString();
+              TiempoVenta.Text = Config.General.Tiempo.Venta.ToString();
+              TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
+              TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
+              TiempoVentaTipoPago.Text = Config.General.Tiempo.VentaTipoPago.ToString();
+              TiempoCancelacion.Text = Config.General.Tiempo.VentaCancelacion.ToString();
+              TiempoAjuste.Text = Config.General.Tiempo.Ajuste.ToString();
+              InicializarTareasAsyncronas();
+              MostrarConfiguracionesLocales();
+              MostrarConfiguracionesExternas();
+            //ObtenerColorPorPorcentaje(10);
         }
-
+        
         private void MostrarConfiguracionesLocales()
         {
             LocalUrlUsuario.Text = Config.Local.Usuario.UrlImportar;
@@ -88,9 +90,12 @@ namespace ServicioMercastock
                 InicializarEstado(estadoInventario2, bwInventario2, Config.General.Activacion.Inventario2);
                 InicializarEstado(estadoVentaTipoPago,bwVentaTipoPago,Config.General.Activacion.VentaTipoPago);
                 InicializarEstado(estadoCancelacion,bwVentaCancelacion,Config.General.Activacion.VentaCancelacion);
+                InicializarEstado(estadoAjuste,bwAjuste,Config.General.Activacion.Ajuste);
+                InicializarEstado(estadoAjuste2,bwAjuste2,Config.General.Activacion.Ajuste2);
+                InicializarEstado(estadoProveedor,bwProveedor,Config.General.Activacion.Proveedor);
+                InicializarEstado(estadoProveedorArticulo,bwProveedorArticulo,Config.General.Activacion.ProveedorArticulo);
                 if(!bwFormulario.IsBusy)
                 bwFormulario.RunWorkerAsync();
-
             }
             else
             {
@@ -336,7 +341,15 @@ namespace ServicioMercastock
             TiempoCancelacion.Tag = "VENTA CANCELACION";
             statusCancelacion.Tag = bwVentaCancelacion;
             MetodoGenerico(statusCancelacion, TiempoCancelacion, Venta.Local.ExportarListaCancelacion, VentaTipoPago.Externa.ImportarCancelacion, ref tiempo, tiempo);
+            
+        }
 
+        private void bwAjuste_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Ajuste;
+            TiempoAjuste.Tag = "AJUSTE";
+            statusAjuste.Tag = bwAjuste;
+            MetodoGenerico(statusAjuste,TiempoAjuste,Ajuste.Externa.Exportar,Ajuste.Local.Importar,ref tiempo,tiempo);
         }
 
         private bool _banderaDetener;
@@ -371,6 +384,34 @@ namespace ServicioMercastock
                 detenerMenuItem.Enabled = true;
                 _banderaDetener = false;
             }
+        }
+
+        private void bwAjuste2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Ajuste2;
+            TiempoAjuste.Tag = "AJUSTE";
+            statusAjuste.Tag = bwAjuste;
+            MetodoGenerico(statusAjuste2, TiempoAjuste2, Ajuste.Local.Exportar, Ajuste.Externa.Importar, ref tiempo, tiempo);
+
+
+        }
+
+        private void bwProveedor_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Proveedor;
+            TiempoProveedor.Tag = "PROVEEDOR";
+            statusProveedor.Tag = bwDepartamento;
+            MetodoGenerico(statusDepartamento, TiempoProveedor, Departamento.Local.Exportar, Departamento.Externa.Importar, ref tiempo, tiempo);
+
+        }
+
+        private void bwProveedorArticulo_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.ProveedorArticulo;
+            TiempoProveedorArticulo.Tag = "PROVEEDOR ARTICULO";
+            statusProveedorArticulo.Tag = bwDepartamento;
+            MetodoGenerico(statusDepartamento, TiempoProveedorArticulo, Departamento.Local.Exportar, Departamento.Externa.Importar, ref tiempo, tiempo);
+
         }
     }
 

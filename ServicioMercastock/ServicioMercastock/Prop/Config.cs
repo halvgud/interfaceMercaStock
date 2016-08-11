@@ -1,7 +1,4 @@
-﻿
-using Newtonsoft.Json;
-
-namespace ServicioMercastock.Prop
+﻿namespace ServicioMercastock.Prop
 {
    public class Config
     {
@@ -21,6 +18,9 @@ namespace ServicioMercastock.Prop
                 public static string Venta { get; set; }
                 public static string VentaTipoPago { get; set; }
                 public static string DashBoard { get; set; }
+                public static string Ajuste { get; set; }
+                public static string Proveedor { get; set; }
+                public static string ProveedorArticulo { get; set; }
             }
 
            public class Externo
@@ -36,6 +36,9 @@ namespace ServicioMercastock.Prop
                 public static string Venta { get; set; }
                 public static string VentaTipoPago { get; set; }
                 public static string VentaCancelacion { get; set; }
+                public static string Ajuste { get; set; }
+                public static string Proveedor { get; set; }
+                public static string ProveedorArticulo { get; set; }
             }
        }
        public class General
@@ -55,7 +58,11 @@ namespace ServicioMercastock.Prop
                 public static int Inventario2 { get; set; }
                 public static int VentaTipoPago { get; set; }
                 public static int VentaCancelacion { get; set; }
-           }
+                public static int Ajuste { get; set; }
+                public static int Ajuste2 { get; set; }
+                public static int Proveedor { get; set; }
+                public static int ProveedorArticulo { get; set; }
+            }
 
            public class Activacion
            {
@@ -71,6 +78,10 @@ namespace ServicioMercastock.Prop
                 public static bool Inventario2 { get; set; }
                 public static bool VentaTipoPago { get; set; }
                 public static bool VentaCancelacion { get; set; }
+                public static bool Ajuste { get; set; }
+                public static bool Ajuste2 { get; set; }
+                public static bool Proveedor { get; set; }
+                public static bool ProveedorArticulo { get; set; }
             }
 
            public class Gcm
@@ -152,6 +163,23 @@ namespace ServicioMercastock.Prop
             {
                 public static string UrlExportar { get; set; }
             }
+
+            public class Ajuste
+            {
+                public static string UrlImportar { get; set; }
+                public static string UrlExportar { get; set; }
+                public static string UrlActualizar { get; set; }
+            }
+
+            public class Proveedor
+            {
+                public static string UrlExportar { get; set; }
+            }
+
+            public class ProveedorArticulo
+            {
+                public static string UrlExportar { get; set; }
+            }
         }
 
        public class Externa
@@ -222,6 +250,20 @@ namespace ServicioMercastock.Prop
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlMaximaIdVenta { get; set; }
+            }
+            public class Ajuste
+            {
+                public static string UrlImportar { get; set; }
+                public static string UrlExportar { get; set; }
+                public static string UrlActualizar { get; set; }
+            }
+            public class Proveedor
+            {
+                public static string UrlImportar { get; set; }
+            }
+            public class ProveedorArticulo
+            {
+                public static string UrlImportar { get; set; }
             }
         }
     }

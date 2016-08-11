@@ -79,7 +79,7 @@ namespace ServicioMercastock.Data
             var stream = tRequest.GetRequestStream();
             stream.Write(bytes, 0, bytes.Length);
             stream.Close();
-            var wResponse = tRequest.GetResponse();
+            var wResponse = tRequest.GetResponse(); 
 
             stream = wResponse.GetResponseStream();
 

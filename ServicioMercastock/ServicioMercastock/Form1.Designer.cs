@@ -32,6 +32,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label32 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.statusUsuario = new System.Windows.Forms.Label();
@@ -66,14 +67,15 @@
             this.estadoInventario2 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.statusVentaTipoPago = new System.Windows.Forms.Label();
+            this.estadoVentaTipoPago = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.statusCancelacion = new System.Windows.Forms.Label();
-            this.estadoVentaTipoPago = new System.Windows.Forms.Label();
             this.estadoCancelacion = new System.Windows.Forms.Label();
+            this.statusAjuste = new System.Windows.Forms.Label();
+            this.estadoAjuste = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.TiempoCancelacion = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -135,6 +137,9 @@
             this.TiempoInventario2 = new System.Windows.Forms.Label();
             this.TiempoVentaTipoPago = new System.Windows.Forms.Label();
             this.TiempoInventario1 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.TiempoAjuste = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -157,6 +162,25 @@
             this.bwUsuario2 = new System.ComponentModel.BackgroundWorker();
             this.bwVentaTipoPago = new System.ComponentModel.BackgroundWorker();
             this.bwVentaCancelacion = new System.ComponentModel.BackgroundWorker();
+            this.bwAjuste = new System.ComponentModel.BackgroundWorker();
+            this.bwAjuste2 = new System.ComponentModel.BackgroundWorker();
+            this.bwProveedor = new System.ComponentModel.BackgroundWorker();
+            this.bwProveedorArticulo = new System.ComponentModel.BackgroundWorker();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.statusAjuste2 = new System.Windows.Forms.Label();
+            this.statusProveedor = new System.Windows.Forms.Label();
+            this.estadoAjuste2 = new System.Windows.Forms.Label();
+            this.estadoProveedor = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.statusProveedorArticulo = new System.Windows.Forms.Label();
+            this.estadoProveedorArticulo = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.TiempoAjuste2 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.TiempoProveedor = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.TiempoProveedorArticulo = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -177,7 +201,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(809, 405);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(859, 443);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox2
@@ -185,9 +209,9 @@
             this.groupBox2.Controls.Add(this.tableLayoutPanel3);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBox2.Location = new System.Drawing.Point(407, 3);
+            this.groupBox2.Location = new System.Drawing.Point(432, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(399, 399);
+            this.groupBox2.Size = new System.Drawing.Size(424, 437);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Traer información de inventarios y re-envío a servidor Web";
@@ -233,14 +257,26 @@
             this.tableLayoutPanel3.Controls.Add(this.estadoInventario2, 2, 10);
             this.tableLayoutPanel3.Controls.Add(this.label29, 0, 11);
             this.tableLayoutPanel3.Controls.Add(this.statusVentaTipoPago, 1, 11);
+            this.tableLayoutPanel3.Controls.Add(this.estadoVentaTipoPago, 2, 11);
             this.tableLayoutPanel3.Controls.Add(this.label48, 0, 12);
             this.tableLayoutPanel3.Controls.Add(this.statusCancelacion, 1, 12);
-            this.tableLayoutPanel3.Controls.Add(this.estadoVentaTipoPago, 2, 11);
             this.tableLayoutPanel3.Controls.Add(this.estadoCancelacion, 2, 12);
+            this.tableLayoutPanel3.Controls.Add(this.label32, 0, 13);
+            this.tableLayoutPanel3.Controls.Add(this.statusAjuste, 1, 13);
+            this.tableLayoutPanel3.Controls.Add(this.estadoAjuste, 2, 13);
+            this.tableLayoutPanel3.Controls.Add(this.label31, 0, 14);
+            this.tableLayoutPanel3.Controls.Add(this.label50, 0, 15);
+            this.tableLayoutPanel3.Controls.Add(this.statusAjuste2, 1, 14);
+            this.tableLayoutPanel3.Controls.Add(this.statusProveedor, 1, 15);
+            this.tableLayoutPanel3.Controls.Add(this.estadoAjuste2, 2, 14);
+            this.tableLayoutPanel3.Controls.Add(this.estadoProveedor, 2, 15);
+            this.tableLayoutPanel3.Controls.Add(this.label56, 0, 16);
+            this.tableLayoutPanel3.Controls.Add(this.statusProveedorArticulo, 1, 16);
+            this.tableLayoutPanel3.Controls.Add(this.estadoProveedorArticulo, 2, 16);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 13;
+            this.tableLayoutPanel3.RowCount = 18;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
@@ -253,9 +289,23 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 169F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(393, 380);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(418, 418);
             this.tableLayoutPanel3.TabIndex = 4;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(3, 270);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(36, 13);
+            this.label32.TabIndex = 43;
+            this.label32.Text = "Ajuste";
             // 
             // label7
             // 
@@ -271,14 +321,14 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 36);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(75, 13);
+            this.label10.Size = new System.Drawing.Size(52, 13);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Async Usuario";
+            this.label10.Text = "Usuario 2";
             // 
             // statusUsuario
             // 
             this.statusUsuario.AutoSize = true;
-            this.statusUsuario.Location = new System.Drawing.Point(115, 36);
+            this.statusUsuario.Location = new System.Drawing.Point(122, 36);
             this.statusUsuario.Name = "statusUsuario";
             this.statusUsuario.Size = new System.Drawing.Size(31, 13);
             this.statusUsuario.TabIndex = 3;
@@ -289,14 +339,14 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(3, 53);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(87, 13);
+            this.label11.Size = new System.Drawing.Size(55, 13);
             this.label11.TabIndex = 10;
-            this.label11.Text = "Async Parametro";
+            this.label11.Text = "Parametro";
             // 
             // statusArticulo
             // 
             this.statusArticulo.AutoSize = true;
-            this.statusArticulo.Location = new System.Drawing.Point(115, 72);
+            this.statusArticulo.Location = new System.Drawing.Point(122, 72);
             this.statusArticulo.Name = "statusArticulo";
             this.statusArticulo.Size = new System.Drawing.Size(31, 13);
             this.statusArticulo.TabIndex = 9;
@@ -305,7 +355,7 @@
             // statusParametro
             // 
             this.statusParametro.AutoSize = true;
-            this.statusParametro.Location = new System.Drawing.Point(115, 53);
+            this.statusParametro.Location = new System.Drawing.Point(122, 53);
             this.statusParametro.Name = "statusParametro";
             this.statusParametro.Size = new System.Drawing.Size(31, 13);
             this.statusParametro.TabIndex = 11;
@@ -316,23 +366,23 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(3, 72);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(74, 13);
+            this.label15.Size = new System.Drawing.Size(42, 13);
             this.label15.TabIndex = 12;
-            this.label15.Text = "Async Articulo";
+            this.label15.Text = "Articulo";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(3, 92);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Async Categoria";
+            this.label9.Text = "Categoria";
             // 
             // statusCategoria
             // 
             this.statusCategoria.AutoSize = true;
-            this.statusCategoria.Location = new System.Drawing.Point(115, 92);
+            this.statusCategoria.Location = new System.Drawing.Point(122, 92);
             this.statusCategoria.Name = "statusCategoria";
             this.statusCategoria.Size = new System.Drawing.Size(31, 13);
             this.statusCategoria.TabIndex = 13;
@@ -343,32 +393,32 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(3, 135);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(67, 13);
+            this.label25.Size = new System.Drawing.Size(35, 13);
             this.label25.TabIndex = 14;
-            this.label25.Text = "Async Venta";
+            this.label25.Text = "Venta";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(3, 161);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(103, 13);
+            this.label26.Size = new System.Drawing.Size(71, 13);
             this.label26.TabIndex = 15;
-            this.label26.Text = "Async Detalle Venta";
+            this.label26.Text = "Detalle Venta";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(3, 187);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(86, 13);
+            this.label27.Size = new System.Drawing.Size(54, 13);
             this.label27.TabIndex = 16;
-            this.label27.Text = "Async Inventario";
+            this.label27.Text = "Inventario";
             // 
             // statusVenta
             // 
             this.statusVenta.AutoSize = true;
-            this.statusVenta.Location = new System.Drawing.Point(115, 135);
+            this.statusVenta.Location = new System.Drawing.Point(122, 135);
             this.statusVenta.Name = "statusVenta";
             this.statusVenta.Size = new System.Drawing.Size(31, 13);
             this.statusVenta.TabIndex = 17;
@@ -377,7 +427,7 @@
             // statusDetalleVenta
             // 
             this.statusDetalleVenta.AutoSize = true;
-            this.statusDetalleVenta.Location = new System.Drawing.Point(115, 161);
+            this.statusDetalleVenta.Location = new System.Drawing.Point(122, 161);
             this.statusDetalleVenta.Name = "statusDetalleVenta";
             this.statusDetalleVenta.Size = new System.Drawing.Size(31, 13);
             this.statusDetalleVenta.TabIndex = 18;
@@ -386,7 +436,7 @@
             // statusInventario
             // 
             this.statusInventario.AutoSize = true;
-            this.statusInventario.Location = new System.Drawing.Point(115, 187);
+            this.statusInventario.Location = new System.Drawing.Point(122, 187);
             this.statusInventario.Name = "statusInventario";
             this.statusInventario.Size = new System.Drawing.Size(31, 13);
             this.statusInventario.TabIndex = 19;
@@ -395,7 +445,7 @@
             // estadoUsuario
             // 
             this.estadoUsuario.AutoSize = true;
-            this.estadoUsuario.Location = new System.Drawing.Point(239, 36);
+            this.estadoUsuario.Location = new System.Drawing.Point(254, 36);
             this.estadoUsuario.Name = "estadoUsuario";
             this.estadoUsuario.Size = new System.Drawing.Size(57, 13);
             this.estadoUsuario.TabIndex = 20;
@@ -404,7 +454,7 @@
             // estadoParametro
             // 
             this.estadoParametro.AutoSize = true;
-            this.estadoParametro.Location = new System.Drawing.Point(239, 53);
+            this.estadoParametro.Location = new System.Drawing.Point(254, 53);
             this.estadoParametro.Name = "estadoParametro";
             this.estadoParametro.Size = new System.Drawing.Size(57, 13);
             this.estadoParametro.TabIndex = 21;
@@ -413,7 +463,7 @@
             // estadoArticulo
             // 
             this.estadoArticulo.AutoSize = true;
-            this.estadoArticulo.Location = new System.Drawing.Point(239, 72);
+            this.estadoArticulo.Location = new System.Drawing.Point(254, 72);
             this.estadoArticulo.Name = "estadoArticulo";
             this.estadoArticulo.Size = new System.Drawing.Size(57, 13);
             this.estadoArticulo.TabIndex = 22;
@@ -422,7 +472,7 @@
             // estadoCategoria
             // 
             this.estadoCategoria.AutoSize = true;
-            this.estadoCategoria.Location = new System.Drawing.Point(239, 92);
+            this.estadoCategoria.Location = new System.Drawing.Point(254, 92);
             this.estadoCategoria.Name = "estadoCategoria";
             this.estadoCategoria.Size = new System.Drawing.Size(57, 13);
             this.estadoCategoria.TabIndex = 23;
@@ -431,7 +481,7 @@
             // estadoVenta
             // 
             this.estadoVenta.AutoSize = true;
-            this.estadoVenta.Location = new System.Drawing.Point(239, 135);
+            this.estadoVenta.Location = new System.Drawing.Point(254, 135);
             this.estadoVenta.Name = "estadoVenta";
             this.estadoVenta.Size = new System.Drawing.Size(57, 13);
             this.estadoVenta.TabIndex = 24;
@@ -440,7 +490,7 @@
             // estadoDetalleVenta
             // 
             this.estadoDetalleVenta.AutoSize = true;
-            this.estadoDetalleVenta.Location = new System.Drawing.Point(239, 161);
+            this.estadoDetalleVenta.Location = new System.Drawing.Point(254, 161);
             this.estadoDetalleVenta.Name = "estadoDetalleVenta";
             this.estadoDetalleVenta.Size = new System.Drawing.Size(57, 13);
             this.estadoDetalleVenta.TabIndex = 25;
@@ -449,7 +499,7 @@
             // estadoInventario1
             // 
             this.estadoInventario1.AutoSize = true;
-            this.estadoInventario1.Location = new System.Drawing.Point(239, 187);
+            this.estadoInventario1.Location = new System.Drawing.Point(254, 187);
             this.estadoInventario1.Name = "estadoInventario1";
             this.estadoInventario1.Size = new System.Drawing.Size(57, 13);
             this.estadoInventario1.TabIndex = 26;
@@ -458,7 +508,7 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(239, 0);
+            this.label34.Location = new System.Drawing.Point(254, 0);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(40, 13);
             this.label34.TabIndex = 27;
@@ -469,14 +519,14 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(3, 115);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(106, 13);
+            this.label24.Size = new System.Drawing.Size(74, 13);
             this.label24.TabIndex = 31;
-            this.label24.Text = "Async Departamento";
+            this.label24.Text = "Departamento";
             // 
             // statusDepartamento
             // 
             this.statusDepartamento.AutoSize = true;
-            this.statusDepartamento.Location = new System.Drawing.Point(115, 115);
+            this.statusDepartamento.Location = new System.Drawing.Point(122, 115);
             this.statusDepartamento.Name = "statusDepartamento";
             this.statusDepartamento.Size = new System.Drawing.Size(31, 13);
             this.statusDepartamento.TabIndex = 32;
@@ -485,7 +535,7 @@
             // estadoDepartamento
             // 
             this.estadoDepartamento.AutoSize = true;
-            this.estadoDepartamento.Location = new System.Drawing.Point(239, 115);
+            this.estadoDepartamento.Location = new System.Drawing.Point(254, 115);
             this.estadoDepartamento.Name = "estadoDepartamento";
             this.estadoDepartamento.Size = new System.Drawing.Size(57, 13);
             this.estadoDepartamento.TabIndex = 33;
@@ -496,14 +546,14 @@
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(3, 20);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(75, 13);
+            this.label28.Size = new System.Drawing.Size(43, 13);
             this.label28.TabIndex = 34;
-            this.label28.Text = "Async Usuario";
+            this.label28.Text = "Usuario";
             // 
             // statusUsuario2
             // 
             this.statusUsuario2.AutoSize = true;
-            this.statusUsuario2.Location = new System.Drawing.Point(115, 20);
+            this.statusUsuario2.Location = new System.Drawing.Point(122, 20);
             this.statusUsuario2.Name = "statusUsuario2";
             this.statusUsuario2.Size = new System.Drawing.Size(31, 13);
             this.statusUsuario2.TabIndex = 35;
@@ -512,7 +562,7 @@
             // estadoUsuario2
             // 
             this.estadoUsuario2.AutoSize = true;
-            this.estadoUsuario2.Location = new System.Drawing.Point(239, 20);
+            this.estadoUsuario2.Location = new System.Drawing.Point(254, 20);
             this.estadoUsuario2.Name = "estadoUsuario2";
             this.estadoUsuario2.Size = new System.Drawing.Size(57, 13);
             this.estadoUsuario2.TabIndex = 36;
@@ -523,14 +573,14 @@
             this.label49.AutoSize = true;
             this.label49.Location = new System.Drawing.Point(3, 211);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(86, 13);
+            this.label49.Size = new System.Drawing.Size(63, 13);
             this.label49.TabIndex = 29;
-            this.label49.Text = "Async Inventario";
+            this.label49.Text = "Inventario 2";
             // 
             // statusInventario2
             // 
             this.statusInventario2.AutoSize = true;
-            this.statusInventario2.Location = new System.Drawing.Point(115, 211);
+            this.statusInventario2.Location = new System.Drawing.Point(122, 211);
             this.statusInventario2.Name = "statusInventario2";
             this.statusInventario2.Size = new System.Drawing.Size(31, 13);
             this.statusInventario2.TabIndex = 28;
@@ -539,7 +589,7 @@
             // estadoInventario2
             // 
             this.estadoInventario2.AutoSize = true;
-            this.estadoInventario2.Location = new System.Drawing.Point(239, 211);
+            this.estadoInventario2.Location = new System.Drawing.Point(254, 211);
             this.estadoInventario2.Name = "estadoInventario2";
             this.estadoInventario2.Size = new System.Drawing.Size(57, 13);
             this.estadoInventario2.TabIndex = 30;
@@ -550,54 +600,72 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(3, 231);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(88, 13);
+            this.label29.Size = new System.Drawing.Size(56, 13);
             this.label29.TabIndex = 37;
-            this.label29.Text = "Async Tipo Pago";
+            this.label29.Text = "Tipo Pago";
             // 
             // statusVentaTipoPago
             // 
             this.statusVentaTipoPago.AutoSize = true;
-            this.statusVentaTipoPago.Location = new System.Drawing.Point(115, 231);
+            this.statusVentaTipoPago.Location = new System.Drawing.Point(122, 231);
             this.statusVentaTipoPago.Name = "statusVentaTipoPago";
             this.statusVentaTipoPago.Size = new System.Drawing.Size(31, 13);
             this.statusVentaTipoPago.TabIndex = 38;
             this.statusVentaTipoPago.Text = "Valor";
+            // 
+            // estadoVentaTipoPago
+            // 
+            this.estadoVentaTipoPago.AutoSize = true;
+            this.estadoVentaTipoPago.Location = new System.Drawing.Point(254, 231);
+            this.estadoVentaTipoPago.Name = "estadoVentaTipoPago";
+            this.estadoVentaTipoPago.Size = new System.Drawing.Size(57, 13);
+            this.estadoVentaTipoPago.TabIndex = 39;
+            this.estadoVentaTipoPago.Text = "INACTIVO";
             // 
             // label48
             // 
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(3, 251);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(98, 13);
+            this.label48.Size = new System.Drawing.Size(66, 13);
             this.label48.TabIndex = 42;
-            this.label48.Text = "Async Cancelacion";
+            this.label48.Text = "Cancelacion";
             // 
             // statusCancelacion
             // 
             this.statusCancelacion.AutoSize = true;
-            this.statusCancelacion.Location = new System.Drawing.Point(115, 251);
+            this.statusCancelacion.Location = new System.Drawing.Point(122, 251);
             this.statusCancelacion.Name = "statusCancelacion";
             this.statusCancelacion.Size = new System.Drawing.Size(31, 13);
             this.statusCancelacion.TabIndex = 41;
             this.statusCancelacion.Text = "Valor";
             // 
-            // estadoVentaTipoPago
-            // 
-            this.estadoVentaTipoPago.AutoSize = true;
-            this.estadoVentaTipoPago.Location = new System.Drawing.Point(239, 231);
-            this.estadoVentaTipoPago.Name = "estadoVentaTipoPago";
-            this.estadoVentaTipoPago.Size = new System.Drawing.Size(57, 13);
-            this.estadoVentaTipoPago.TabIndex = 39;
-            this.estadoVentaTipoPago.Text = "INACTIVO";
-            // 
             // estadoCancelacion
             // 
             this.estadoCancelacion.AutoSize = true;
-            this.estadoCancelacion.Location = new System.Drawing.Point(239, 251);
+            this.estadoCancelacion.Location = new System.Drawing.Point(254, 251);
             this.estadoCancelacion.Name = "estadoCancelacion";
             this.estadoCancelacion.Size = new System.Drawing.Size(57, 13);
             this.estadoCancelacion.TabIndex = 40;
             this.estadoCancelacion.Text = "INACTIVO";
+            // 
+            // statusAjuste
+            // 
+            this.statusAjuste.AutoSize = true;
+            this.statusAjuste.Location = new System.Drawing.Point(122, 270);
+            this.statusAjuste.Name = "statusAjuste";
+            this.statusAjuste.Size = new System.Drawing.Size(31, 13);
+            this.statusAjuste.TabIndex = 44;
+            this.statusAjuste.Text = "Valor";
+            // 
+            // estadoAjuste
+            // 
+            this.estadoAjuste.AutoSize = true;
+            this.estadoAjuste.Location = new System.Drawing.Point(254, 270);
+            this.estadoAjuste.Name = "estadoAjuste";
+            this.estadoAjuste.Size = new System.Drawing.Size(57, 13);
+            this.estadoAjuste.TabIndex = 45;
+            this.estadoAjuste.Text = "INACTIVO";
             // 
             // groupBox1
             // 
@@ -606,7 +674,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(398, 399);
+            this.groupBox1.Size = new System.Drawing.Size(423, 437);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Migración de tablas de Servidor Web a Local";
@@ -619,7 +687,6 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel2.Controls.Add(this.TiempoCancelacion, 3, 17);
-            this.tableLayoutPanel2.Controls.Add(this.label31, 2, 17);
             this.tableLayoutPanel2.Controls.Add(this.label30, 0, 17);
             this.tableLayoutPanel2.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label2, 0, 3);
@@ -681,10 +748,19 @@
             this.tableLayoutPanel2.Controls.Add(this.TiempoInventario2, 3, 16);
             this.tableLayoutPanel2.Controls.Add(this.TiempoVentaTipoPago, 1, 17);
             this.tableLayoutPanel2.Controls.Add(this.TiempoInventario1, 1, 16);
+            this.tableLayoutPanel2.Controls.Add(this.label33, 2, 17);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoAjuste, 1, 18);
+            this.tableLayoutPanel2.Controls.Add(this.label51, 0, 18);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoAjuste2, 3, 18);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoProveedor, 1, 19);
+            this.tableLayoutPanel2.Controls.Add(this.label57, 2, 19);
+            this.tableLayoutPanel2.Controls.Add(this.TiempoProveedorArticulo, 3, 19);
+            this.tableLayoutPanel2.Controls.Add(this.label54, 2, 18);
+            this.tableLayoutPanel2.Controls.Add(this.label52, 0, 19);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 20;
+            this.tableLayoutPanel2.RowCount = 23;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -703,29 +779,23 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 174F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(392, 380);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(417, 418);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
             // TiempoCancelacion
             // 
             this.TiempoCancelacion.AutoSize = true;
-            this.TiempoCancelacion.Location = new System.Drawing.Point(295, 325);
+            this.TiempoCancelacion.Location = new System.Drawing.Point(315, 325);
             this.TiempoCancelacion.Name = "TiempoCancelacion";
             this.TiempoCancelacion.Size = new System.Drawing.Size(31, 13);
             this.TiempoCancelacion.TabIndex = 60;
             this.TiempoCancelacion.Text = "Valor";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(198, 325);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(66, 13);
-            this.label31.TabIndex = 60;
-            this.label31.Text = "Cancelacion";
             // 
             // label30
             // 
@@ -766,7 +836,7 @@
             // ApiUrlLocal
             // 
             this.ApiUrlLocal.AutoSize = true;
-            this.ApiUrlLocal.Location = new System.Drawing.Point(105, 26);
+            this.ApiUrlLocal.Location = new System.Drawing.Point(112, 26);
             this.ApiUrlLocal.Name = "ApiUrlLocal";
             this.ApiUrlLocal.Size = new System.Drawing.Size(31, 13);
             this.ApiUrlLocal.TabIndex = 3;
@@ -775,7 +845,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(198, 26);
+            this.label4.Location = new System.Drawing.Point(211, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
             this.label4.TabIndex = 4;
@@ -784,7 +854,7 @@
             // ApiUrlWeb
             // 
             this.ApiUrlWeb.AutoSize = true;
-            this.ApiUrlWeb.Location = new System.Drawing.Point(295, 26);
+            this.ApiUrlWeb.Location = new System.Drawing.Point(315, 26);
             this.ApiUrlWeb.Name = "ApiUrlWeb";
             this.ApiUrlWeb.Size = new System.Drawing.Size(31, 13);
             this.ApiUrlWeb.TabIndex = 5;
@@ -793,7 +863,7 @@
             // LocalUrlUsuario
             // 
             this.LocalUrlUsuario.AutoSize = true;
-            this.LocalUrlUsuario.Location = new System.Drawing.Point(105, 39);
+            this.LocalUrlUsuario.Location = new System.Drawing.Point(112, 39);
             this.LocalUrlUsuario.Name = "LocalUrlUsuario";
             this.LocalUrlUsuario.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlUsuario.TabIndex = 6;
@@ -802,7 +872,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(198, 0);
+            this.label6.Location = new System.Drawing.Point(211, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 26);
             this.label6.TabIndex = 7;
@@ -811,7 +881,7 @@
             // ExternoUrlUsuario
             // 
             this.ExternoUrlUsuario.AutoSize = true;
-            this.ExternoUrlUsuario.Location = new System.Drawing.Point(295, 39);
+            this.ExternoUrlUsuario.Location = new System.Drawing.Point(315, 39);
             this.ExternoUrlUsuario.Name = "ExternoUrlUsuario";
             this.ExternoUrlUsuario.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlUsuario.TabIndex = 8;
@@ -820,7 +890,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(198, 39);
+            this.label8.Location = new System.Drawing.Point(211, 39);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 13);
             this.label8.TabIndex = 9;
@@ -838,7 +908,7 @@
             // LocalUrlParametro
             // 
             this.LocalUrlParametro.AutoSize = true;
-            this.LocalUrlParametro.Location = new System.Drawing.Point(105, 60);
+            this.LocalUrlParametro.Location = new System.Drawing.Point(112, 60);
             this.LocalUrlParametro.Name = "LocalUrlParametro";
             this.LocalUrlParametro.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlParametro.TabIndex = 11;
@@ -883,7 +953,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(198, 60);
+            this.label18.Location = new System.Drawing.Point(211, 60);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(71, 13);
             this.label18.TabIndex = 17;
@@ -892,7 +962,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(198, 81);
+            this.label19.Location = new System.Drawing.Point(211, 81);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(58, 13);
             this.label19.TabIndex = 18;
@@ -901,7 +971,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(198, 102);
+            this.label20.Location = new System.Drawing.Point(211, 102);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(70, 13);
             this.label20.TabIndex = 19;
@@ -910,7 +980,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(198, 123);
+            this.label21.Location = new System.Drawing.Point(211, 123);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(51, 13);
             this.label21.TabIndex = 20;
@@ -919,7 +989,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(198, 147);
+            this.label22.Location = new System.Drawing.Point(211, 147);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(87, 13);
             this.label22.TabIndex = 21;
@@ -928,7 +998,7 @@
             // LocalUrlArticulo
             // 
             this.LocalUrlArticulo.AutoSize = true;
-            this.LocalUrlArticulo.Location = new System.Drawing.Point(105, 81);
+            this.LocalUrlArticulo.Location = new System.Drawing.Point(112, 81);
             this.LocalUrlArticulo.Name = "LocalUrlArticulo";
             this.LocalUrlArticulo.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlArticulo.TabIndex = 23;
@@ -937,7 +1007,7 @@
             // LocalUrlCategoria
             // 
             this.LocalUrlCategoria.AutoSize = true;
-            this.LocalUrlCategoria.Location = new System.Drawing.Point(105, 102);
+            this.LocalUrlCategoria.Location = new System.Drawing.Point(112, 102);
             this.LocalUrlCategoria.Name = "LocalUrlCategoria";
             this.LocalUrlCategoria.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlCategoria.TabIndex = 24;
@@ -946,7 +1016,7 @@
             // LocalUrlVenta
             // 
             this.LocalUrlVenta.AutoSize = true;
-            this.LocalUrlVenta.Location = new System.Drawing.Point(105, 123);
+            this.LocalUrlVenta.Location = new System.Drawing.Point(112, 123);
             this.LocalUrlVenta.Name = "LocalUrlVenta";
             this.LocalUrlVenta.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlVenta.TabIndex = 25;
@@ -955,7 +1025,7 @@
             // LocalUrlDetalleVenta
             // 
             this.LocalUrlDetalleVenta.AutoSize = true;
-            this.LocalUrlDetalleVenta.Location = new System.Drawing.Point(105, 147);
+            this.LocalUrlDetalleVenta.Location = new System.Drawing.Point(112, 147);
             this.LocalUrlDetalleVenta.Name = "LocalUrlDetalleVenta";
             this.LocalUrlDetalleVenta.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlDetalleVenta.TabIndex = 26;
@@ -964,7 +1034,7 @@
             // ExternoUrlParametro
             // 
             this.ExternoUrlParametro.AutoSize = true;
-            this.ExternoUrlParametro.Location = new System.Drawing.Point(295, 60);
+            this.ExternoUrlParametro.Location = new System.Drawing.Point(315, 60);
             this.ExternoUrlParametro.Name = "ExternoUrlParametro";
             this.ExternoUrlParametro.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlParametro.TabIndex = 27;
@@ -973,7 +1043,7 @@
             // ExternoUrlArticulo
             // 
             this.ExternoUrlArticulo.AutoSize = true;
-            this.ExternoUrlArticulo.Location = new System.Drawing.Point(295, 81);
+            this.ExternoUrlArticulo.Location = new System.Drawing.Point(315, 81);
             this.ExternoUrlArticulo.Name = "ExternoUrlArticulo";
             this.ExternoUrlArticulo.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlArticulo.TabIndex = 29;
@@ -982,7 +1052,7 @@
             // ExternoUrlCategoria
             // 
             this.ExternoUrlCategoria.AutoSize = true;
-            this.ExternoUrlCategoria.Location = new System.Drawing.Point(295, 102);
+            this.ExternoUrlCategoria.Location = new System.Drawing.Point(315, 102);
             this.ExternoUrlCategoria.Name = "ExternoUrlCategoria";
             this.ExternoUrlCategoria.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlCategoria.TabIndex = 28;
@@ -991,7 +1061,7 @@
             // ExternoUrlVenta
             // 
             this.ExternoUrlVenta.AutoSize = true;
-            this.ExternoUrlVenta.Location = new System.Drawing.Point(295, 123);
+            this.ExternoUrlVenta.Location = new System.Drawing.Point(315, 123);
             this.ExternoUrlVenta.Name = "ExternoUrlVenta";
             this.ExternoUrlVenta.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlVenta.TabIndex = 30;
@@ -1000,7 +1070,7 @@
             // ExternoUrlDetalleVenta
             // 
             this.ExternoUrlDetalleVenta.AutoSize = true;
-            this.ExternoUrlDetalleVenta.Location = new System.Drawing.Point(295, 147);
+            this.ExternoUrlDetalleVenta.Location = new System.Drawing.Point(315, 147);
             this.ExternoUrlDetalleVenta.Name = "ExternoUrlDetalleVenta";
             this.ExternoUrlDetalleVenta.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlDetalleVenta.TabIndex = 31;
@@ -1018,7 +1088,7 @@
             // LocalUrlInventario
             // 
             this.LocalUrlInventario.AutoSize = true;
-            this.LocalUrlInventario.Location = new System.Drawing.Point(105, 165);
+            this.LocalUrlInventario.Location = new System.Drawing.Point(112, 165);
             this.LocalUrlInventario.Name = "LocalUrlInventario";
             this.LocalUrlInventario.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlInventario.TabIndex = 32;
@@ -1027,7 +1097,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(198, 165);
+            this.label17.Location = new System.Drawing.Point(211, 165);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(70, 13);
             this.label17.TabIndex = 16;
@@ -1036,7 +1106,7 @@
             // ExternoUrlInventario
             // 
             this.ExternoUrlInventario.AutoSize = true;
-            this.ExternoUrlInventario.Location = new System.Drawing.Point(295, 165);
+            this.ExternoUrlInventario.Location = new System.Drawing.Point(315, 165);
             this.ExternoUrlInventario.Name = "ExternoUrlInventario";
             this.ExternoUrlInventario.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlInventario.TabIndex = 33;
@@ -1054,7 +1124,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(198, 185);
+            this.label36.Location = new System.Drawing.Point(211, 185);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(79, 13);
             this.label36.TabIndex = 35;
@@ -1063,7 +1133,7 @@
             // LocalUrlInventario2
             // 
             this.LocalUrlInventario2.AutoSize = true;
-            this.LocalUrlInventario2.Location = new System.Drawing.Point(105, 185);
+            this.LocalUrlInventario2.Location = new System.Drawing.Point(112, 185);
             this.LocalUrlInventario2.Name = "LocalUrlInventario2";
             this.LocalUrlInventario2.Size = new System.Drawing.Size(31, 13);
             this.LocalUrlInventario2.TabIndex = 36;
@@ -1072,7 +1142,7 @@
             // ExternoUrlInventario2
             // 
             this.ExternoUrlInventario2.AutoSize = true;
-            this.ExternoUrlInventario2.Location = new System.Drawing.Point(295, 185);
+            this.ExternoUrlInventario2.Location = new System.Drawing.Point(315, 185);
             this.ExternoUrlInventario2.Name = "ExternoUrlInventario2";
             this.ExternoUrlInventario2.Size = new System.Drawing.Size(31, 13);
             this.ExternoUrlInventario2.TabIndex = 37;
@@ -1108,7 +1178,7 @@
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(198, 225);
+            this.label40.Location = new System.Drawing.Point(211, 225);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(42, 13);
             this.label40.TabIndex = 41;
@@ -1117,7 +1187,7 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(198, 245);
+            this.label41.Location = new System.Drawing.Point(211, 245);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(52, 13);
             this.label41.TabIndex = 42;
@@ -1126,7 +1196,7 @@
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(198, 265);
+            this.label43.Location = new System.Drawing.Point(211, 265);
             this.label43.Name = "label43";
             this.label43.Size = new System.Drawing.Size(55, 13);
             this.label43.TabIndex = 44;
@@ -1153,7 +1223,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(198, 285);
+            this.label45.Location = new System.Drawing.Point(211, 285);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(71, 13);
             this.label45.TabIndex = 47;
@@ -1171,7 +1241,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(198, 305);
+            this.label47.Location = new System.Drawing.Point(211, 305);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(63, 13);
             this.label47.TabIndex = 49;
@@ -1180,7 +1250,7 @@
             // TiempoPantalla
             // 
             this.TiempoPantalla.AutoSize = true;
-            this.TiempoPantalla.Location = new System.Drawing.Point(105, 225);
+            this.TiempoPantalla.Location = new System.Drawing.Point(112, 225);
             this.TiempoPantalla.Name = "TiempoPantalla";
             this.TiempoPantalla.Size = new System.Drawing.Size(31, 13);
             this.TiempoPantalla.TabIndex = 50;
@@ -1189,7 +1259,7 @@
             // TiempoUsuario
             // 
             this.TiempoUsuario.AutoSize = true;
-            this.TiempoUsuario.Location = new System.Drawing.Point(105, 245);
+            this.TiempoUsuario.Location = new System.Drawing.Point(112, 245);
             this.TiempoUsuario.Name = "TiempoUsuario";
             this.TiempoUsuario.Size = new System.Drawing.Size(31, 13);
             this.TiempoUsuario.TabIndex = 51;
@@ -1198,7 +1268,7 @@
             // TiempoDepartamento
             // 
             this.TiempoDepartamento.AutoSize = true;
-            this.TiempoDepartamento.Location = new System.Drawing.Point(105, 265);
+            this.TiempoDepartamento.Location = new System.Drawing.Point(112, 265);
             this.TiempoDepartamento.Name = "TiempoDepartamento";
             this.TiempoDepartamento.Size = new System.Drawing.Size(31, 13);
             this.TiempoDepartamento.TabIndex = 52;
@@ -1207,7 +1277,7 @@
             // TiempoVenta
             // 
             this.TiempoVenta.AutoSize = true;
-            this.TiempoVenta.Location = new System.Drawing.Point(105, 285);
+            this.TiempoVenta.Location = new System.Drawing.Point(112, 285);
             this.TiempoVenta.Name = "TiempoVenta";
             this.TiempoVenta.Size = new System.Drawing.Size(31, 13);
             this.TiempoVenta.TabIndex = 53;
@@ -1216,7 +1286,7 @@
             // TiempoArticulo
             // 
             this.TiempoArticulo.AutoSize = true;
-            this.TiempoArticulo.Location = new System.Drawing.Point(295, 225);
+            this.TiempoArticulo.Location = new System.Drawing.Point(315, 225);
             this.TiempoArticulo.Name = "TiempoArticulo";
             this.TiempoArticulo.Size = new System.Drawing.Size(31, 13);
             this.TiempoArticulo.TabIndex = 55;
@@ -1225,7 +1295,7 @@
             // TiempoCategoria
             // 
             this.TiempoCategoria.AutoSize = true;
-            this.TiempoCategoria.Location = new System.Drawing.Point(295, 245);
+            this.TiempoCategoria.Location = new System.Drawing.Point(315, 245);
             this.TiempoCategoria.Name = "TiempoCategoria";
             this.TiempoCategoria.Size = new System.Drawing.Size(31, 13);
             this.TiempoCategoria.TabIndex = 56;
@@ -1234,7 +1304,7 @@
             // TiempoParametro
             // 
             this.TiempoParametro.AutoSize = true;
-            this.TiempoParametro.Location = new System.Drawing.Point(295, 265);
+            this.TiempoParametro.Location = new System.Drawing.Point(315, 265);
             this.TiempoParametro.Name = "TiempoParametro";
             this.TiempoParametro.Size = new System.Drawing.Size(31, 13);
             this.TiempoParametro.TabIndex = 57;
@@ -1243,7 +1313,7 @@
             // TiempoDetalleVenta
             // 
             this.TiempoDetalleVenta.AutoSize = true;
-            this.TiempoDetalleVenta.Location = new System.Drawing.Point(295, 285);
+            this.TiempoDetalleVenta.Location = new System.Drawing.Point(315, 285);
             this.TiempoDetalleVenta.Name = "TiempoDetalleVenta";
             this.TiempoDetalleVenta.Size = new System.Drawing.Size(31, 13);
             this.TiempoDetalleVenta.TabIndex = 58;
@@ -1252,7 +1322,7 @@
             // TiempoInventario2
             // 
             this.TiempoInventario2.AutoSize = true;
-            this.TiempoInventario2.Location = new System.Drawing.Point(295, 305);
+            this.TiempoInventario2.Location = new System.Drawing.Point(315, 305);
             this.TiempoInventario2.Name = "TiempoInventario2";
             this.TiempoInventario2.Size = new System.Drawing.Size(31, 13);
             this.TiempoInventario2.TabIndex = 59;
@@ -1261,7 +1331,7 @@
             // TiempoVentaTipoPago
             // 
             this.TiempoVentaTipoPago.AutoSize = true;
-            this.TiempoVentaTipoPago.Location = new System.Drawing.Point(105, 325);
+            this.TiempoVentaTipoPago.Location = new System.Drawing.Point(112, 325);
             this.TiempoVentaTipoPago.Name = "TiempoVentaTipoPago";
             this.TiempoVentaTipoPago.Size = new System.Drawing.Size(31, 13);
             this.TiempoVentaTipoPago.TabIndex = 60;
@@ -1270,11 +1340,38 @@
             // TiempoInventario1
             // 
             this.TiempoInventario1.AutoSize = true;
-            this.TiempoInventario1.Location = new System.Drawing.Point(105, 305);
+            this.TiempoInventario1.Location = new System.Drawing.Point(112, 305);
             this.TiempoInventario1.Name = "TiempoInventario1";
             this.TiempoInventario1.Size = new System.Drawing.Size(31, 13);
             this.TiempoInventario1.TabIndex = 54;
             this.TiempoInventario1.Text = "Valor";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(211, 325);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(66, 13);
+            this.label33.TabIndex = 60;
+            this.label33.Text = "Cancelacion";
+            // 
+            // TiempoAjuste
+            // 
+            this.TiempoAjuste.AutoSize = true;
+            this.TiempoAjuste.Location = new System.Drawing.Point(112, 345);
+            this.TiempoAjuste.Name = "TiempoAjuste";
+            this.TiempoAjuste.Size = new System.Drawing.Size(31, 13);
+            this.TiempoAjuste.TabIndex = 60;
+            this.TiempoAjuste.Text = "Valor";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(3, 345);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(36, 13);
+            this.label51.TabIndex = 50;
+            this.label51.Text = "Ajuste";
             // 
             // backgroundWorker1
             // 
@@ -1295,7 +1392,7 @@
             this.statusTiempoDeReinicio});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(809, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(859, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1316,14 +1413,14 @@
             // detenerMenuItem
             // 
             this.detenerMenuItem.Name = "detenerMenuItem";
-            this.detenerMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.detenerMenuItem.Size = new System.Drawing.Size(115, 22);
             this.detenerMenuItem.Text = "Detener";
             this.detenerMenuItem.Click += new System.EventHandler(this.detenerMenuItem_Click);
             // 
             // salirMenuItem
             // 
             this.salirMenuItem.Name = "salirMenuItem";
-            this.salirMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirMenuItem.Size = new System.Drawing.Size(115, 22);
             this.salirMenuItem.Text = "Salir";
             // 
             // LmemoriaRAM
@@ -1420,12 +1517,171 @@
             this.bwVentaCancelacion.WorkerReportsProgress = true;
             this.bwVentaCancelacion.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwVentaCancelacion_DoWork);
             // 
+            // bwAjuste
+            // 
+            this.bwAjuste.WorkerReportsProgress = true;
+            this.bwAjuste.WorkerSupportsCancellation = true;
+            this.bwAjuste.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAjuste_DoWork);
+            // 
+            // bwAjuste2
+            // 
+            this.bwAjuste2.WorkerReportsProgress = true;
+            this.bwAjuste2.WorkerSupportsCancellation = true;
+            this.bwAjuste2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAjuste2_DoWork);
+            // 
+            // bwProveedor
+            // 
+            this.bwProveedor.WorkerReportsProgress = true;
+            this.bwProveedor.WorkerSupportsCancellation = true;
+            this.bwProveedor.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwProveedor_DoWork);
+            // 
+            // bwProveedorArticulo
+            // 
+            this.bwProveedorArticulo.WorkerReportsProgress = true;
+            this.bwProveedorArticulo.WorkerSupportsCancellation = true;
+            this.bwProveedorArticulo.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwProveedorArticulo_DoWork);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(3, 291);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(45, 13);
+            this.label31.TabIndex = 43;
+            this.label31.Text = "Ajuste 2";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(3, 311);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(56, 13);
+            this.label50.TabIndex = 43;
+            this.label50.Text = "Proveedor";
+            // 
+            // statusAjuste2
+            // 
+            this.statusAjuste2.AutoSize = true;
+            this.statusAjuste2.Location = new System.Drawing.Point(122, 291);
+            this.statusAjuste2.Name = "statusAjuste2";
+            this.statusAjuste2.Size = new System.Drawing.Size(31, 13);
+            this.statusAjuste2.TabIndex = 44;
+            this.statusAjuste2.Text = "Valor";
+            // 
+            // statusProveedor
+            // 
+            this.statusProveedor.AutoSize = true;
+            this.statusProveedor.Location = new System.Drawing.Point(122, 311);
+            this.statusProveedor.Name = "statusProveedor";
+            this.statusProveedor.Size = new System.Drawing.Size(31, 13);
+            this.statusProveedor.TabIndex = 44;
+            this.statusProveedor.Text = "Valor";
+            // 
+            // estadoAjuste2
+            // 
+            this.estadoAjuste2.AutoSize = true;
+            this.estadoAjuste2.Location = new System.Drawing.Point(254, 291);
+            this.estadoAjuste2.Name = "estadoAjuste2";
+            this.estadoAjuste2.Size = new System.Drawing.Size(57, 13);
+            this.estadoAjuste2.TabIndex = 45;
+            this.estadoAjuste2.Text = "INACTIVO";
+            // 
+            // estadoProveedor
+            // 
+            this.estadoProveedor.AutoSize = true;
+            this.estadoProveedor.Location = new System.Drawing.Point(254, 311);
+            this.estadoProveedor.Name = "estadoProveedor";
+            this.estadoProveedor.Size = new System.Drawing.Size(57, 13);
+            this.estadoProveedor.TabIndex = 45;
+            this.estadoProveedor.Text = "INACTIVO";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(3, 331);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(94, 13);
+            this.label56.TabIndex = 43;
+            this.label56.Text = "Proveedor Articulo";
+            // 
+            // statusProveedorArticulo
+            // 
+            this.statusProveedorArticulo.AutoSize = true;
+            this.statusProveedorArticulo.Location = new System.Drawing.Point(122, 331);
+            this.statusProveedorArticulo.Name = "statusProveedorArticulo";
+            this.statusProveedorArticulo.Size = new System.Drawing.Size(31, 13);
+            this.statusProveedorArticulo.TabIndex = 44;
+            this.statusProveedorArticulo.Text = "Valor";
+            // 
+            // estadoProveedorArticulo
+            // 
+            this.estadoProveedorArticulo.AutoSize = true;
+            this.estadoProveedorArticulo.Location = new System.Drawing.Point(254, 331);
+            this.estadoProveedorArticulo.Name = "estadoProveedorArticulo";
+            this.estadoProveedorArticulo.Size = new System.Drawing.Size(57, 13);
+            this.estadoProveedorArticulo.TabIndex = 45;
+            this.estadoProveedorArticulo.Text = "INACTIVO";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(3, 365);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(56, 13);
+            this.label52.TabIndex = 60;
+            this.label52.Text = "Proveedor";
+            // 
+            // TiempoAjuste2
+            // 
+            this.TiempoAjuste2.AutoSize = true;
+            this.TiempoAjuste2.Location = new System.Drawing.Point(315, 345);
+            this.TiempoAjuste2.Name = "TiempoAjuste2";
+            this.TiempoAjuste2.Size = new System.Drawing.Size(31, 13);
+            this.TiempoAjuste2.TabIndex = 60;
+            this.TiempoAjuste2.Text = "Valor";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(211, 345);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(45, 13);
+            this.label54.TabIndex = 50;
+            this.label54.Text = "Ajuste 2";
+            // 
+            // TiempoProveedor
+            // 
+            this.TiempoProveedor.AutoSize = true;
+            this.TiempoProveedor.Location = new System.Drawing.Point(112, 365);
+            this.TiempoProveedor.Name = "TiempoProveedor";
+            this.TiempoProveedor.Size = new System.Drawing.Size(31, 13);
+            this.TiempoProveedor.TabIndex = 60;
+            this.TiempoProveedor.Text = "Valor";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(211, 365);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(94, 13);
+            this.label57.TabIndex = 60;
+            this.label57.Text = "Proveedor Articulo";
+            // 
+            // TiempoProveedorArticulo
+            // 
+            this.TiempoProveedorArticulo.AutoSize = true;
+            this.TiempoProveedorArticulo.Location = new System.Drawing.Point(315, 365);
+            this.TiempoProveedorArticulo.Name = "TiempoProveedorArticulo";
+            this.TiempoProveedorArticulo.Size = new System.Drawing.Size(31, 13);
+            this.TiempoProveedorArticulo.TabIndex = 60;
+            this.TiempoProveedorArticulo.Text = "Valor";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(809, 427);
+            this.ClientSize = new System.Drawing.Size(859, 465);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "Form1";
@@ -1568,13 +1824,37 @@
         private System.Windows.Forms.Label TiempoVentaTipoPago;
         public System.ComponentModel.BackgroundWorker bwVentaCancelacion;
         private System.Windows.Forms.Label TiempoCancelacion;
-        private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label statusCancelacion;
         private System.Windows.Forms.Label estadoCancelacion;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton1;
         private System.Windows.Forms.ToolStripMenuItem detenerMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirMenuItem;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label statusAjuste;
+        private System.Windows.Forms.Label estadoAjuste;
+        public System.ComponentModel.BackgroundWorker bwAjuste;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label TiempoAjuste;
+        private System.Windows.Forms.Label label51;
+        public System.ComponentModel.BackgroundWorker bwAjuste2;
+        public System.ComponentModel.BackgroundWorker bwProveedor;
+        public System.ComponentModel.BackgroundWorker bwProveedorArticulo;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label statusAjuste2;
+        private System.Windows.Forms.Label statusProveedor;
+        private System.Windows.Forms.Label estadoAjuste2;
+        private System.Windows.Forms.Label estadoProveedor;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label statusProveedorArticulo;
+        private System.Windows.Forms.Label estadoProveedorArticulo;
+        private System.Windows.Forms.Label TiempoAjuste2;
+        private System.Windows.Forms.Label TiempoProveedor;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.Label TiempoProveedorArticulo;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label52;
     }
 }
 
