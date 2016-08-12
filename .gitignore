@@ -5,3 +5,6 @@ ServicioMercastock/ServicioMercastock/bin/Debug/ServicioMercastock.pdb
 ServicioMercastock/ServicioMercastock/bin/Debug/config - copia.ini
 *.log
 ServicioMercastock/ServicioMercastock/bin/Debug/ServicioMercastock.exe
+*.exe
+ServicioMercastock/ServicioMercastock/bin/Debug/ServicioMercastock.pdb
+*.exe

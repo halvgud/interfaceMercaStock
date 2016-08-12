@@ -63,6 +63,8 @@
     <Compile Include="Data\DetalleVenta.cs" />
     <Compile Include="Data\Inventario.cs" />
     <Compile Include="Data\Parametro.cs" />
+    <Compile Include="Data\Proveedor.cs" />
+    <Compile Include="Data\ProveedorArticulo.cs" />
     <Compile Include="Data\Rest.cs" />
     <Compile Include="Data\Sucursal.cs" />
     <Compile Include="Data\Venta.cs" />

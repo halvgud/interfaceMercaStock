@@ -400,8 +400,8 @@ namespace ServicioMercastock
         {
             var tiempo = Config.General.Tiempo.Proveedor;
             TiempoProveedor.Tag = "PROVEEDOR";
-            statusProveedor.Tag = bwDepartamento;
-            MetodoGenerico(statusDepartamento, TiempoProveedor, Departamento.Local.Exportar, Departamento.Externa.Importar, ref tiempo, tiempo);
+            statusProveedor.Tag = bwProveedor;
+            MetodoGenerico(statusProveedor, TiempoProveedor, Proveedor.Local.Exportar, Proveedor.Externa.Importar, ref tiempo, tiempo);
 
         }
 
@@ -409,8 +409,8 @@ namespace ServicioMercastock
         {
             var tiempo = Config.General.Tiempo.ProveedorArticulo;
             TiempoProveedorArticulo.Tag = "PROVEEDOR ARTICULO";
-            statusProveedorArticulo.Tag = bwDepartamento;
-            MetodoGenerico(statusDepartamento, TiempoProveedorArticulo, Departamento.Local.Exportar, Departamento.Externa.Importar, ref tiempo, tiempo);
+            statusProveedorArticulo.Tag = bwProveedorArticulo;
+            MetodoGenerico(statusProveedorArticulo, TiempoProveedorArticulo, ProveedorArticulo.Local.Exportar, ProveedorArticulo.Externa.Importar, ref tiempo, tiempo);
 
         }
     }
