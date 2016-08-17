@@ -68,7 +68,7 @@ namespace ServicioMercastock.Data
                     Opcion.Log(Config.Log.Interno.Ajuste, "EXCEPCION: " + e.Message);
                 }
             }
-            public static void Actualizar(string json, Action<string> callback)
+            public static void Actualizar(Action<string> callback)
             {
                 try
                 {
@@ -77,7 +77,7 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
-                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
+                    //rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
@@ -113,10 +113,7 @@ namespace ServicioMercastock.Data
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            Local.Actualizar(json, x =>
-                            {
-                                Console.WriteLine(x);
-                            });
+                           // Local.Actualizar(json, Console.WriteLine);
                             callback(response.Content);
                         }
                         else

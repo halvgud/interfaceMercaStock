@@ -413,6 +413,14 @@ namespace ServicioMercastock
             MetodoGenerico(statusProveedorArticulo, TiempoProveedorArticulo, ProveedorArticulo.Local.Exportar, ProveedorArticulo.Externa.Importar, ref tiempo, tiempo);
 
         }
+
+        private void bwAjuste3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Ajuste3;
+            TiempoAjuste3.Tag = "AJUSTE 3";
+            statusAjuste3.Tag = bwAjuste3;
+            MetodoGenerico(statusAjuste3,TiempoAjuste3,Ajuste.Local.Actualizar,Ajuste.Externa.Actualizar,ref tiempo,tiempo);
+        }
     }
 
 }

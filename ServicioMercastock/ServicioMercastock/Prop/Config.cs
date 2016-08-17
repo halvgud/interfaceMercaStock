@@ -60,6 +60,7 @@
                 public static int VentaCancelacion { get; set; }
                 public static int Ajuste { get; set; }
                 public static int Ajuste2 { get; set; }
+                public static int Ajuste3 { get; set; }
                 public static int Proveedor { get; set; }
                 public static int ProveedorArticulo { get; set; }
             }
@@ -80,6 +81,7 @@
                 public static bool VentaCancelacion { get; set; }
                 public static bool Ajuste { get; set; }
                 public static bool Ajuste2 { get; set; }
+                public static bool Ajuste3 { get; set; }
                 public static bool Proveedor { get; set; }
                 public static bool ProveedorArticulo { get; set; }
             }
