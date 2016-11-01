@@ -1,4 +1,27 @@
-﻿using System;
+﻿/*
+                   +----------------+
+                   |                |
+                   |   MERCASTOCK   |
+                   |                |
+                   +----^-----------+
+                        |   |
+  Externo.Importar();+-^+   +^-------+Externo.Exportar();
+                        |   |
+                   +--------v-------+     +----------------+  +---------------+
+                   |                |     |  WEB SERVICES  |  |  PROCESO DE   |
+                   |    INTERFAZ    +--^--+    LOCALES     +--+ ACTUALIZACION |
+                   |                |  |  |                |  |               |
+                   +----------------+  |  +---------^------+  +---------------+
+                          ^            |        |   |                 |
+                          |            +        |   |   Local.        |
+                          |   Local.Importar(); |   +-> Transaccion()<-+
+                          |                     |
+                          |                     |
+                          +---------------------+
+
+*/
+
+using System;
 using System.Net;
 using RestSharp;
 using ServicioMercastock.Prop;
@@ -8,7 +31,8 @@ namespace ServicioMercastock.Data
     class Ajuste
     {
         public class Local
-        {
+        { 
+            /*2do paso*/
             public static void Importar(string json, Action<string> callback)
             {
                 try
@@ -21,8 +45,8 @@ namespace ServicioMercastock.Data
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
                             Console.WriteLine(response.Content);
-                            Externa.Actualizar(response.Content,Console.WriteLine);
-                            callback(response.Content);
+                            Externa.Actualizar(json,Console.WriteLine,1);
+                            callback(response.Content); 
                         }
                         else
                         {
@@ -44,8 +68,6 @@ namespace ServicioMercastock.Data
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
-
-                    //rest1.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         switch (response.StatusCode)
@@ -59,30 +81,81 @@ namespace ServicioMercastock.Data
                             default:
                                 Opcion.Log(Config.Log.Interno.Inventario1, response.Content + "::" + response.Content);
                                 callback("CONTINUAR");
-                                break;
+                                break;  
                         }
                     });
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Interno.Ajuste, "EXCEPCION: " + e.Message);
+                    Opcion.Log(Config.Log.Interno.Ajuste, "EXCEPCION: eXportar" + e.Message);
                 }
             }
-            public static void Actualizar(Action<string> callback)
+
+            public static void Actualizar(string json,Action<string> callback,int tipo)
             {
                 try
                 {
-                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.Ajuste.UrlActualizar,
-                        Method.POST);
-                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
-                        Constantes.Http.TipoDeContenido.Json);
+                    var rest = new Rest(Config.Externa.Api.UrlApi,Config.Local.Ajuste.UrlActualizar+"/"+tipo,Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
-                    //rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
+                    var response = rest.Cliente.Execute(rest.Peticion);               
+                    switch (response.StatusCode)
+                    {
+                        case HttpStatusCode.OK: 
+                            Console.WriteLine(response.Content);
+                            callback(response.Content);
+                            break;              
+                        default:
+                            Opcion.Log(Config.Log.Interno.Inventario1, response.StatusCode + "::" + response.Content);
+                            callback("CONTINUAR");
+                            break;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Externo.Ajuste, "EXCEPCION:Actualizar " + e.Message);
+                }
+            }
+            /*3er paso-> aqui se inicializa el ajuste*/
+            public static void Transaccion(Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Local.Ajuste.UrlLista, Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
+                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
                     {
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
-                            callback(response.Content);
+                            IniciaTransaccion(response.Content, callback);
+                        }
+                        else
+                        {
+                            callback("CONTINUAR");
+                        }
+                    });
+                }
+                catch (Exception e)
+                {
+                    Opcion.Log(Config.Log.Externo.Ajuste,"EXCEPCION Transaccion:"+e.Message);
+                }
+            }
+
+            private static void IniciaTransaccion(string json,Action<string> callback)
+            {
+                try
+                {
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Local.Ajuste.UrlTransaccion, Method.POST);
+                    rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido, Constantes.Http.TipoDeContenido.Json);
+                    rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
+                    rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
+                    rest.Cliente.ExecuteAsync(rest.Peticion, response =>
+                    {
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            callback(json);
                         }
                         else
                         {
@@ -93,7 +166,7 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Ajuste, "EXCEPCION: " + e.Message);
+                    Opcion.Log(Config.Log.Externo.Ajuste, "EXCEPCION: IniciarTransaccion " + e.Message);
                 }
             }
         }
@@ -110,11 +183,10 @@ namespace ServicioMercastock.Data
                     rest.Peticion.AddHeader(Constantes.Http.Autenticacion, Config.Externa.Sucursal.ClaveApi);
                     rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, json, ParameterType.RequestBody);
                     rest.Cliente.ExecuteAsync(rest.Peticion, response =>
-                    {
+                    {//que pedo?
                         if (response.StatusCode == HttpStatusCode.OK)
                         {
-                           // Local.Actualizar(json, Console.WriteLine);
-                            callback(response.Content);
+                            Local.Actualizar(json, callback, 1);
                         }
                         else
                         {
@@ -124,9 +196,11 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Ajuste, "EXCEPCION: " + e.Message);
+                    Opcion.Log(Config.Log.Externo.Ajuste, "EXCEPCION: Importar:" + e.Message);
                 }
             }
+
+            /*primer paso*/
             public static void Exportar(Action<string> callback)
             {
                 try
@@ -156,15 +230,16 @@ namespace ServicioMercastock.Data
                 }
                 catch (Exception e)
                 {
-                    Opcion.Log(Config.Log.Externo.Inventario2, "EXCEPCION: " + e.Message);
+                    Opcion.Log(Config.Log.Externo.Inventario2, "EXCEPCION-Exportar: " + e.Message);
                 }
             }
 
-            public static void Actualizar(string json,Action<string> callback)
+            /*3er paso?  cambia de estados*/
+            public static void Actualizar(string json,Action<string> callback,int tipo)
             {
                 try
                 {
-                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.Ajuste.UrlActualizar,
+                    var rest = new Rest(Config.Externa.Api.UrlApi, Config.Externa.Ajuste.UrlActualizar+"/"+tipo,
                         Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);

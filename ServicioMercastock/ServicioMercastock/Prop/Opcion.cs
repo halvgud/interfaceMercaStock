@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
 
 namespace ServicioMercastock.Prop
@@ -13,7 +14,7 @@ namespace ServicioMercastock.Prop
         {
             try
             {
-                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini")))
+                if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini"))) 
                 {
                     var lineas = File.ReadAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini"));
                     var diccionario
@@ -80,8 +81,16 @@ namespace ServicioMercastock.Prop
         }
         public static string LimpiarJson(string json)
         {
-            return JObject.Parse(json.Substring(json.IndexOf('{'),
-                      json.LastIndexOf('}') + 1 - json.IndexOf('{'))).ToString();
+            try
+            {
+                return /*JObject.Parse(*/json/*).ToString()*/;
+            }
+            catch (Exception e)
+            {
+
+                return "{}";
+            }
+
         }
     }
 }

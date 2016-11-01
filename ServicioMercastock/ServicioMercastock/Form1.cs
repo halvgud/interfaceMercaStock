@@ -20,25 +20,27 @@ namespace ServicioMercastock
         private void Form1_Load(object sender, EventArgs e)
         {
             //_flagFinalizarEjecucion = true;
-              CheckForIllegalCrossThreadCalls = false;
-              ApiUrlLocal.Text = Config.Local.Api.UrlApi;
-              ApiUrlWeb.Text = Config.Externa.Api.UrlApi;
-              TiempoPantalla.Text = Config.General.Tiempo.Pantalla.ToString();
-              TiempoArticulo.Text = Config.General.Tiempo.Articulo.ToString();
-              TiempoCategoria.Text = Config.General.Tiempo.Categoria.ToString();
-              TiempoDepartamento.Text = Config.General.Tiempo.Departamento.ToString();
-              TiempoUsuario.Text = Config.General.Tiempo.Usuario.ToString();
-              TiempoParametro.Text = Config.General.Tiempo.Parametro.ToString();
-              TiempoDetalleVenta.Text = Config.General.Tiempo.DetalleVenta.ToString();
-              TiempoVenta.Text = Config.General.Tiempo.Venta.ToString();
-              TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
-              TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
-              TiempoVentaTipoPago.Text = Config.General.Tiempo.VentaTipoPago.ToString();
-              TiempoCancelacion.Text = Config.General.Tiempo.VentaCancelacion.ToString();
-              TiempoAjuste.Text = Config.General.Tiempo.Ajuste.ToString();
-              InicializarTareasAsyncronas();
-              MostrarConfiguracionesLocales();
-              MostrarConfiguracionesExternas();
+            CheckForIllegalCrossThreadCalls = false;
+            ApiUrlLocal.Text = Config.Local.Api.UrlApi;
+            ApiUrlWeb.Text = Config.Externa.Api.UrlApi;
+            TiempoPantalla.Text = Config.General.Tiempo.Pantalla.ToString();
+            TiempoArticulo.Text = Config.General.Tiempo.Articulo.ToString();
+            TiempoCategoria.Text = Config.General.Tiempo.Categoria.ToString();
+            TiempoDepartamento.Text = Config.General.Tiempo.Departamento.ToString();
+            TiempoUsuario.Text = Config.General.Tiempo.Usuario.ToString();
+            TiempoParametro.Text = Config.General.Tiempo.Parametro.ToString();
+            TiempoDetalleVenta.Text = Config.General.Tiempo.DetalleVenta.ToString();
+            TiempoVenta.Text = Config.General.Tiempo.Venta.ToString();
+            TiempoInventario1.Text = Config.General.Tiempo.Inventario1.ToString();
+            TiempoInventario2.Text = Config.General.Tiempo.Inventario2.ToString();
+            TiempoVentaTipoPago.Text = Config.General.Tiempo.VentaTipoPago.ToString();
+            TiempoCancelacion.Text = Config.General.Tiempo.VentaCancelacion.ToString();
+            TiempoAjuste.Text = Config.General.Tiempo.Ajuste.ToString();
+            TiempoAjuste2.Text = Config.General.Tiempo.Ajuste2.ToString();
+            TiempoAjuste3.Text = Config.General.Tiempo.Ajuste3.ToString();
+            InicializarTareasAsyncronas();
+            MostrarConfiguracionesLocales();
+            MostrarConfiguracionesExternas();
             //ObtenerColorPorPorcentaje(10);
         }
         
@@ -90,8 +92,9 @@ namespace ServicioMercastock
                 InicializarEstado(estadoInventario2, bwInventario2, Config.General.Activacion.Inventario2);
                 InicializarEstado(estadoVentaTipoPago,bwVentaTipoPago,Config.General.Activacion.VentaTipoPago);
                 InicializarEstado(estadoCancelacion,bwVentaCancelacion,Config.General.Activacion.VentaCancelacion);
-                InicializarEstado(estadoAjuste,bwAjuste,Config.General.Activacion.Ajuste);
-                InicializarEstado(estadoAjuste2,bwAjuste2,Config.General.Activacion.Ajuste2);
+                InicializarEstado(estadoAjuste,bwAjuste,Config.General.Activacion.Ajuste,cbAjuste1);
+                InicializarEstado(estadoAjuste2, bwAjuste2, Config.General.Activacion.Ajuste2);
+                InicializarEstado(estadoAjuste3, bwAjuste3, Config.General.Activacion.Ajuste3);
                 InicializarEstado(estadoProveedor,bwProveedor,Config.General.Activacion.Proveedor);
                 InicializarEstado(estadoProveedorArticulo,bwProveedorArticulo,Config.General.Activacion.ProveedorArticulo);
                 if(!bwFormulario.IsBusy)
@@ -103,8 +106,15 @@ namespace ServicioMercastock
             }
         }
 
-        public void InicializarEstado(Label estado,BackgroundWorker bw,bool bandera)
+        public void InicializarEstado(Label estado, BackgroundWorker bw, bool bandera)
         {
+            if (!bandera) return;
+            estado.Text = @"ACTIVO";
+            bw.RunWorkerAsync();
+        }
+        public void InicializarEstado(Label estado, BackgroundWorker bw, bool bandera,CheckBox cb)
+        {
+            cb.Checked = bandera;
             if (!bandera) return;
             estado.Text = @"ACTIVO";
             bw.RunWorkerAsync();
@@ -138,7 +148,6 @@ namespace ServicioMercastock
                             TiempoDeEspera(estadoTiempo, ref delegateTiempo);
                             _ejecucionEnProgreso = false;
                             MetodoGenerico(status,estadoTiempo, exportar, importar, ref delegateTiempo,tiempo2);
-                            
                         });
                     }
                     else
@@ -163,7 +172,7 @@ namespace ServicioMercastock
 
             for (var i = tiempoDeEspera; i >= 0; --i)
             {
-               // DashBoard.Externa.Actualizar(estadoTiempo.Tag.ToString(),i,tiempoDeEspera);
+               // DashBoard.Externa.Transaccion(estadoTiempo.Tag.ToString(),i,tiempoDeEspera);
                 estadoTiempo.Text = i + @" Minutos";
                 Thread.Sleep(1000 * 60);
             }
@@ -224,21 +233,19 @@ namespace ServicioMercastock
 
         private void bwCategoria_DoWork(object sender, DoWorkEventArgs e)
         {
-                var tiempo = Config.General.Tiempo.Categoria;
+            var tiempo = Config.General.Tiempo.Categoria;
             TiempoCategoria.Tag = "CATEGORIA";
             statusCategoria.Tag = bwCategoria;
             MetodoGenerico(statusCategoria,TiempoCategoria, Categoria.Local.Exportar, Categoria.Externa.Importar, ref tiempo,tiempo);
-
         }
 
         private void bwDepartamento_DoWork(object sender, DoWorkEventArgs e)
         {
 
-                var tiempo = Config.General.Tiempo.Departamento;
+            var tiempo = Config.General.Tiempo.Departamento;
             TiempoDepartamento.Tag = "DEPARTAMENTO";
             statusDepartamento.Tag = bwDepartamento;
             MetodoGenerico(statusDepartamento,TiempoDepartamento, Departamento.Local.Exportar, Departamento.Externa.Importar,ref tiempo,tiempo);
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -259,23 +266,20 @@ namespace ServicioMercastock
             TiempoVenta.Tag = "VENTA";
             statusVenta.Tag = bwVenta;
             MetodoGenerico(statusVenta,TiempoVenta, Venta.Local.Exportar, Venta.Externa.Importar, ref tiempo,tiempo);
-
         }
 
         private void bwDetalleVenta_DoWork(object sender, DoWorkEventArgs e)
         {
-
-                var tiempo = Config.General.Tiempo.DetalleVenta;
+            var tiempo = Config.General.Tiempo.DetalleVenta;
             TiempoDetalleVenta.Tag = "DETALLEVENTA";
             statusDetalleVenta.Tag = bwDetalleVenta;
             MetodoGenerico(statusDetalleVenta,TiempoDetalleVenta, DetalleVenta.Local.Exportar, DetalleVenta.Externa.Importar, ref tiempo,tiempo);
-
         }
 
         public void bwInventario1_DoWork(object sender, DoWorkEventArgs e)
         {
 
-                var tiempo = Config.General.Tiempo.Inventario1;
+            var tiempo = Config.General.Tiempo.Inventario1;
             TiempoInventario1.Tag = "INVENTARIO1";
             statusInventario.Tag = bwInventario1;
             MetodoGenerico(statusInventario,TiempoInventario1, Inventario.Externa.Exportar, Inventario.Local.Importar,ref tiempo,tiempo);
@@ -341,15 +345,33 @@ namespace ServicioMercastock
             TiempoCancelacion.Tag = "VENTA CANCELACION";
             statusCancelacion.Tag = bwVentaCancelacion;
             MetodoGenerico(statusCancelacion, TiempoCancelacion, Venta.Local.ExportarListaCancelacion, VentaTipoPago.Externa.ImportarCancelacion, ref tiempo, tiempo);
-            
         }
-
+        /*listo*/
         private void bwAjuste_DoWork(object sender, DoWorkEventArgs e)
         {
             var tiempo = Config.General.Tiempo.Ajuste;
             TiempoAjuste.Tag = "AJUSTE";
             statusAjuste.Tag = bwAjuste;
             MetodoGenerico(statusAjuste,TiempoAjuste,Ajuste.Externa.Exportar,Ajuste.Local.Importar,ref tiempo,tiempo);
+        }
+        private void bwAjuste2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Ajuste2;
+            TiempoAjuste2.Tag = "AJUSTE 2";
+            statusAjuste2.Tag = bwAjuste;
+            MetodoGenerico(statusAjuste2, TiempoAjuste2, Ajuste.Local.Exportar, Ajuste.Externa.Importar, ref tiempo, tiempo);
+        }
+
+        //TODO: este es para actualizar el inventario
+        //TODO: considerar agregar una nueva función para inicializar el ajuste de inventario (y el movimiento de sus respectivas tablas
+        //TODO: Considerar que después de ejecutar la función anterior, devuelva un json para que luego este ejecute Ajuste.Local.Transaccion del tipo 2!
+        //TODO: en el otro query de bAjuste2, deberá buscar todos los registros con estado P y enviarlos al web, este regresará un json el cual deberá actualizar esos mismos registros a estado E
+        private void bwAjuste3_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var tiempo = Config.General.Tiempo.Ajuste3;
+            TiempoAjuste3.Tag = "AJUSTE 3";
+            statusAjuste3.Tag = bwAjuste3;
+            MetodoGenerico(statusAjuste3, TiempoAjuste3, Ajuste.Local.Transaccion, (y, z) => Ajuste.Local.Actualizar(y, z, 2), ref tiempo, tiempo);
         }
 
         private bool _banderaDetener;
@@ -386,23 +408,13 @@ namespace ServicioMercastock
             }
         }
 
-        private void bwAjuste2_DoWork(object sender, DoWorkEventArgs e)
-        {
-            var tiempo = Config.General.Tiempo.Ajuste2;
-            TiempoAjuste.Tag = "AJUSTE";
-            statusAjuste.Tag = bwAjuste;
-            MetodoGenerico(statusAjuste2, TiempoAjuste2, Ajuste.Local.Exportar, Ajuste.Externa.Importar, ref tiempo, tiempo);
-
-
-        }
-
         private void bwProveedor_DoWork(object sender, DoWorkEventArgs e)
         {
             var tiempo = Config.General.Tiempo.Proveedor;
             TiempoProveedor.Tag = "PROVEEDOR";
             statusProveedor.Tag = bwProveedor;
             MetodoGenerico(statusProveedor, TiempoProveedor, Proveedor.Local.Exportar, Proveedor.Externa.Importar, ref tiempo, tiempo);
-
+      
         }
 
         private void bwProveedorArticulo_DoWork(object sender, DoWorkEventArgs e)
@@ -414,12 +426,16 @@ namespace ServicioMercastock
 
         }
 
-        private void bwAjuste3_DoWork(object sender, DoWorkEventArgs e)
+        private void cbAjuste1_CheckedChanged(object sender, EventArgs e)
         {
-            var tiempo = Config.General.Tiempo.Ajuste3;
-            TiempoAjuste3.Tag = "AJUSTE 3";
-            statusAjuste3.Tag = bwAjuste3;
-            MetodoGenerico(statusAjuste3,TiempoAjuste3,Ajuste.Local.Actualizar,Ajuste.Externa.Actualizar,ref tiempo,tiempo);
+            if (cbAjuste1.Checked)
+            {
+
+            }
+            else
+            {
+                bwAjuste.CancelAsync();
+            }
         }
     }
 

@@ -13,8 +13,7 @@ namespace ServicioMercastock.Data
             {
                 try
                 {
-                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.Venta.UrlExportar,
-                        Method.POST);
+                    var rest = new Rest(Config.Local.Api.UrlApi, Config.Local.Venta.UrlExportar,Method.POST);
                     rest.Peticion.AddHeader(Constantes.Http.ObtenerTipoDeContenido,
                         Constantes.Http.TipoDeContenido.Json);
                     rest.Peticion.AddParameter(Constantes.Http.RequestHeaders.Json, Externa.ObtenerIdVenta(Config.Externa.Venta.UrlMaximaIdVenta), ParameterType.RequestBody);

@@ -95,7 +95,6 @@
 
            public class GcmParametro
            {
-              
                public static string LlaveDeColapso { get; set; }
                public static int TiempoDeVida { get; set; }
                 public static bool RetardoMientrasInactivo { get; set; }
@@ -108,7 +107,6 @@
             {
                 public static string UrlApi { get; set; }
             }
-
             public class Gcm
             {
                 public static string UrlLista { get; set; }
@@ -118,7 +116,6 @@
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
             }
-
             public class Parametro
             {
                 public static string UrlImportar { get; set; }
@@ -127,12 +124,10 @@
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class Categoria
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class Sucursal
             {
                 public static string UrlUsuario { get; set; }
@@ -142,42 +137,37 @@
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class DetalleVenta
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class Venta
             {
                 public static string UrlExportar { get; set; }
                 public static string UrlExportarCancelacion { get; set; }
             }
-
             public class Inventario
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
                 public static string UrlActualizar { get; set; }
             }
-
             public class VentaTipoPago
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class Ajuste
             {
                 public static string UrlImportar { get; set; }
                 public static string UrlExportar { get; set; }
+                public static string UrlTransaccion { get; set; }
+                public static string UrlLista { get; set; }
                 public static string UrlActualizar { get; set; }
             }
-
             public class Proveedor
             {
                 public static string UrlExportar { get; set; }
             }
-
             public class ProveedorArticulo
             {
                 public static string UrlExportar { get; set; }

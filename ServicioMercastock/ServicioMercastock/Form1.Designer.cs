@@ -82,6 +82,9 @@
             this.label56 = new System.Windows.Forms.Label();
             this.statusProveedorArticulo = new System.Windows.Forms.Label();
             this.estadoProveedorArticulo = new System.Windows.Forms.Label();
+            this.label55 = new System.Windows.Forms.Label();
+            this.statusAjuste3 = new System.Windows.Forms.Label();
+            this.estadoAjuste3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.TiempoCancelacion = new System.Windows.Forms.Label();
@@ -150,11 +153,13 @@
             this.TiempoAjuste = new System.Windows.Forms.Label();
             this.label51 = new System.Windows.Forms.Label();
             this.TiempoAjuste2 = new System.Windows.Forms.Label();
-            this.TiempoProveedor = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.TiempoProveedorArticulo = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.TiempoProveedor = new System.Windows.Forms.Label();
+            this.TiempoAjuste3 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
@@ -182,11 +187,7 @@
             this.bwProveedor = new System.ComponentModel.BackgroundWorker();
             this.bwProveedorArticulo = new System.ComponentModel.BackgroundWorker();
             this.bwAjuste3 = new System.ComponentModel.BackgroundWorker();
-            this.label53 = new System.Windows.Forms.Label();
-            this.TiempoAjuste3 = new System.Windows.Forms.Label();
-            this.label55 = new System.Windows.Forms.Label();
-            this.statusAjuste3 = new System.Windows.Forms.Label();
-            this.estadoAjuste3 = new System.Windows.Forms.Label();
+            this.cbAjuste1 = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -282,6 +283,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label55, 0, 17);
             this.tableLayoutPanel3.Controls.Add(this.statusAjuste3, 1, 17);
             this.tableLayoutPanel3.Controls.Add(this.estadoAjuste3, 2, 17);
+            this.tableLayoutPanel3.Controls.Add(this.cbAjuste1, 3, 13);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -757,6 +759,33 @@
             this.estadoProveedorArticulo.Size = new System.Drawing.Size(57, 13);
             this.estadoProveedorArticulo.TabIndex = 45;
             this.estadoProveedorArticulo.Text = "INACTIVO";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(3, 351);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(45, 13);
+            this.label55.TabIndex = 43;
+            this.label55.Text = "Ajuste 3";
+            // 
+            // statusAjuste3
+            // 
+            this.statusAjuste3.AutoSize = true;
+            this.statusAjuste3.Location = new System.Drawing.Point(122, 351);
+            this.statusAjuste3.Name = "statusAjuste3";
+            this.statusAjuste3.Size = new System.Drawing.Size(31, 13);
+            this.statusAjuste3.TabIndex = 44;
+            this.statusAjuste3.Text = "Valor";
+            // 
+            // estadoAjuste3
+            // 
+            this.estadoAjuste3.AutoSize = true;
+            this.estadoAjuste3.Location = new System.Drawing.Point(254, 351);
+            this.estadoAjuste3.Name = "estadoAjuste3";
+            this.estadoAjuste3.Size = new System.Drawing.Size(57, 13);
+            this.estadoAjuste3.TabIndex = 45;
+            this.estadoAjuste3.Text = "INACTIVO";
             // 
             // groupBox1
             // 
@@ -1475,15 +1504,6 @@
             this.TiempoAjuste2.TabIndex = 60;
             this.TiempoAjuste2.Text = "Valor";
             // 
-            // TiempoProveedor
-            // 
-            this.TiempoProveedor.AutoSize = true;
-            this.TiempoProveedor.Location = new System.Drawing.Point(112, 385);
-            this.TiempoProveedor.Name = "TiempoProveedor";
-            this.TiempoProveedor.Size = new System.Drawing.Size(31, 13);
-            this.TiempoProveedor.TabIndex = 60;
-            this.TiempoProveedor.Text = "Valor";
-            // 
             // label57
             // 
             this.label57.AutoSize = true;
@@ -1519,6 +1539,33 @@
             this.label52.Size = new System.Drawing.Size(56, 13);
             this.label52.TabIndex = 60;
             this.label52.Text = "Proveedor";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(3, 365);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(45, 13);
+            this.label53.TabIndex = 60;
+            this.label53.Text = "Ajuste 3";
+            // 
+            // TiempoProveedor
+            // 
+            this.TiempoProveedor.AutoSize = true;
+            this.TiempoProveedor.Location = new System.Drawing.Point(112, 385);
+            this.TiempoProveedor.Name = "TiempoProveedor";
+            this.TiempoProveedor.Size = new System.Drawing.Size(31, 13);
+            this.TiempoProveedor.TabIndex = 60;
+            this.TiempoProveedor.Text = "Valor";
+            // 
+            // TiempoAjuste3
+            // 
+            this.TiempoAjuste3.AutoSize = true;
+            this.TiempoAjuste3.Location = new System.Drawing.Point(112, 365);
+            this.TiempoAjuste3.Name = "TiempoAjuste3";
+            this.TiempoAjuste3.Size = new System.Drawing.Size(31, 13);
+            this.TiempoAjuste3.TabIndex = 60;
+            this.TiempoAjuste3.Text = "Valor";
             // 
             // backgroundWorker1
             // 
@@ -1694,50 +1741,15 @@
             this.bwAjuste3.WorkerSupportsCancellation = true;
             this.bwAjuste3.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAjuste3_DoWork);
             // 
-            // label53
+            // cbAjuste1
             // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(3, 365);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(45, 13);
-            this.label53.TabIndex = 60;
-            this.label53.Text = "Ajuste 3";
-            // 
-            // TiempoAjuste3
-            // 
-            this.TiempoAjuste3.AutoSize = true;
-            this.TiempoAjuste3.Location = new System.Drawing.Point(112, 365);
-            this.TiempoAjuste3.Name = "TiempoAjuste3";
-            this.TiempoAjuste3.Size = new System.Drawing.Size(31, 13);
-            this.TiempoAjuste3.TabIndex = 60;
-            this.TiempoAjuste3.Text = "Valor";
-            // 
-            // label55
-            // 
-            this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(3, 351);
-            this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(45, 13);
-            this.label55.TabIndex = 43;
-            this.label55.Text = "Ajuste 2";
-            // 
-            // statusAjuste3
-            // 
-            this.statusAjuste3.AutoSize = true;
-            this.statusAjuste3.Location = new System.Drawing.Point(122, 351);
-            this.statusAjuste3.Name = "statusAjuste3";
-            this.statusAjuste3.Size = new System.Drawing.Size(31, 13);
-            this.statusAjuste3.TabIndex = 44;
-            this.statusAjuste3.Text = "Valor";
-            // 
-            // estadoAjuste3
-            // 
-            this.estadoAjuste3.AutoSize = true;
-            this.estadoAjuste3.Location = new System.Drawing.Point(254, 351);
-            this.estadoAjuste3.Name = "estadoAjuste3";
-            this.estadoAjuste3.Size = new System.Drawing.Size(57, 13);
-            this.estadoAjuste3.TabIndex = 45;
-            this.estadoAjuste3.Text = "INACTIVO";
+            this.cbAjuste1.AutoSize = true;
+            this.cbAjuste1.Location = new System.Drawing.Point(357, 273);
+            this.cbAjuste1.Name = "cbAjuste1";
+            this.cbAjuste1.Size = new System.Drawing.Size(15, 14);
+            this.cbAjuste1.TabIndex = 46;
+            this.cbAjuste1.UseVisualStyleBackColor = true;
+            this.cbAjuste1.CheckedChanged += new System.EventHandler(this.cbAjuste1_CheckedChanged);
             // 
             // Form1
             // 
@@ -1924,6 +1936,7 @@
         private System.Windows.Forms.Label estadoAjuste3;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label TiempoAjuste3;
+        private System.Windows.Forms.CheckBox cbAjuste1;
     }
 }
 
